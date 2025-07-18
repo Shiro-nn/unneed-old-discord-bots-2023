@@ -1,0 +1,14 @@
+[
+    {
+        "name": "JDAmusic",
+        "description_french": "Хороший музыкальный бот, написанный на Java(английский)!",
+        "description_english": "Good music bot written in Java (English)!",
+        "link": "https://discordapp.com/api/oauth2/authorize?client_id=655120572493070356&permissions=8&scope=bot"
+    },
+    {
+        "name": "JDAmusic",
+        "description_french": "Хороший музыкальный бот, написанный на Java(русский)",
+        "description_english": "Good music bot written in Java (Russian)!",
+        "link": "https://discord.gg/nepSees"
+    }
+]

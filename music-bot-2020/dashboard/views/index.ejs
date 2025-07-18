@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="content-language" content="ru-RU">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="Музыкальный бот">
+    <meta name="author" content="fydne">
+    <title>fydne</title>
+
+    <meta property="og:title" content="fydne" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bot2.fydne.xyz" />
+    <meta property="og:image" content="https://bot2.fydne.xyz/fydne.png" />
+    <meta property="og:description" content="fydne bot - Главная" />
+    <meta name="theme-color" content="#ff0000">
+
+    <link rel="icon" type="image/ico" href="/fydne.jpg" />
+    <link rel="stylesheet" type="text/css" href="/css/extras.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/fa/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/fa/all.min.css">
+    <link href="/css/istyle.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/one-page-wonder.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/app.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/all.css" rel="stylesheet" type="text/css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+    <script type="text/javascript">
+       function externalLinks() {
+        links = document.getElementsByTagName("a");
+        for (i=0; i<links.length; i++) {
+          link = links[i];
+          if (link.getAttribute("href") && link.getAttribute("rel") == "external")
+          link.target = "_blank";
+        }
+       }
+       window.onload = externalLinks;
+     </script>
+    <%- include('header/menu') %>
+    <header class="masthead text-center text-white">
+      <div class="masthead-content">
+        <div class="container">
+            <img class="img-fluid bot-avatar rounded-circle" src="/fydne.jpg" width="200px" height="200px" alt="" draggable="false">
+          <h3 class="masthead-heading mb-0" style="font-size: 3em !important;">fydne</h3>
+            <br/>
+            <a class="btn" href="/invite" rel="external" role="button">
+              <span>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </span>
+              Пригласи меня
+            </a>
+            <a class="btn" href="/selector" role="button">
+              <span>
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+              </span>
+              Управление
+            </a>
+        </div>
+      </div>
+      
+    </header>
+    <div id="feature" class="section-padding">
+      <div id="counter">
+        <div class="container">
+          <div id="countertrack" class="row count-to-sec">
+            <div class="col-lg-3 col-md-6 col-xs-12 count-one">
+              <span class="icon">
+                <i class="fa fa-download" aria-hidden="true"></i>
+              </span>
+              <h3 class="timer count-value" data-to="<%= guildsize %>"><%= guildsize %></h3>
+              <hr class="width25-divider">
+              <small class="count-title">Серверов</small>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 count-one">
+              <span class="icon">
+                <i class="fa fa-users" aria-hidden="true"></i>
+              </span>
+              <h3 class="timer count-value" data-to="<%= usersize %>"><%= usersize %></h3>
+              <hr class="width25-divider">
+              <small class="count-title">Юзеров в кэше</small>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 count-one">
+              <span class="icon">
+                <i class="fa fa-microphone" aria-hidden="true"></i>
+              </span>
+              <h3 class="timer count-value" data-to="<%= connects %>"><%= connects %></h3>
+              <hr class="width25-divider">
+              <small class="count-title">Музыка играет</small>
+            </div>
+            <div class="col-lg-3 col-md-6 col-xs-12 count-one">
+              <span class="icon">
+                <i class="fa fa-soundcloud" aria-hidden="true"></i>
+              </span>
+              <h3 class="timer count-value" data-to="<%= music %>"><%= music %></h3>
+              <hr class="width25-divider">
+              <small class="count-title">Музыки проигранно</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%- include('invite/discord') %>
+    </div>
+  <script src="/js/dev.js"></script>
+  <script src="/js/anti.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

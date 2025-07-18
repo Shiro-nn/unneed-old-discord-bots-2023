@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Бот с функциями для модерирования & прослушивания музыки.">
+        <meta name="author" content="fydne">
+        <title>Qurre | Настройки</title>
+        <meta property="og:title" content="Qurre" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bot.fydne.dev" />
+        <meta property="og:image" content="https://bot.fydne.dev/img/qurre_ol.png" />
+        <meta property="og:description" content="Бот с функциями для модерирования & прослушивания музыки." />
+        <meta name="theme-color" content="#2bff00">
+        <link rel="icon" type="image/ico" href="/img/qurre.png" />
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/modules.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/select.css" rel="stylesheet">
+        <link href="/css/etc/tickets.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/etc/emoji.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+    </head>
+    <body class="topbar-dark left-side-menu-dark  pace-done" oncut="return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+        <div id="wrapper">
+            <%- include('../header/menu') %>
+            <%- include('../panel/index') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <button class="btn btn-success mb-2 openCreate" id="ticket_create_button">Создать тикет</button>
+
+                        <% tickets.forEach((ticket) => { %>
+                            <div class="col-lg-12 pt-0">
+                                <div class="card-box cst_panel">
+                                    <div class="row">
+                                        <div class="col-sm-4 col-lg-4"><%= ticket.name %></div>
+                                        <div class="col-sm-6">
+                                            <form method="post" action="">
+                                                <input style="display:none" name="form_id" value="send_ticket_form">
+                                                <input style="display:none" name="hash" value="<%= ticket._id %>">
+                                                <div class="flex_Large">
+                                                    <div class="logCh">
+                                                        <select class="form-control" name="channels">
+                                                            <option selected="selected">Выберите канал</option>
+                                                            <% channelsSend.filter(ch => ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                                                <option value="<%= ch.id %>">#<%= ch.name %></option>
+                                                            <% }); %>
+                                                        </select>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-bordred-success waves-effect waves-light centertxt">Отправить</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-sm-2 col-lg-2">
+                                            <button onclick="TicketSettings('<%= ticket._id %>');" class="panel_settings cst_edit cst_edit_hide btn btn-bordred-info waves-effect waves-light">Настройки</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }); %>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../invite/discord') %>
+        
+        <div id="ticket_create" style="display: none;" class="modal fade bs-example-modal-center show ticket_new ticket_overflow">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header mb-0">
+                        <h4 class="modal-title">Создать тикет</h4>
+                        <button type="button" class="close" data-dismiss="modal" id="ticket_create_close">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">
+                            <input style="display:none" name="section" value="create">
+                            <div class="row">
+                                <div class="col-lg-12 mb-0">
+                                    <div class="card-box card-border mb-2"><label>Название вашего тикета.</label>
+                                        <div class="col-12 mt-0">
+                                            <input type="text" class="form-control" name="ticket_name" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mt-0 mb-0">
+                                    <div class="card-box card-border mb-2"><label>Доступ к тикету.</label>
+                                        <div class="col-12">
+                                            <div class="directorist-select directorist-select-multi" id="multiSelect" data-isSearch="true" data-message='Роли.' data-multiSelect='<%- roles.replaceAll("'", "′") %>' >               
+                                                <input type="hidden" name="role">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mt-0 mb-0">
+                                    <div class="card-box card-border mb-2"><label>Категория тикетов.</label>
+                                        <div class="col-12 logCh dntchng">
+                                            <select class="form-control" name="category">
+                                                <option selected="selected">Не выбрано</option>
+                                                <% channelsSend.filter(ch => ch.type === "GUILD_CATEGORY").forEach((ch) => { %>
+                                                    <option value="<%= ch.id %>"><%= ch.name %></option>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mt-0 mb-0">
+                                    <div class="card-box card-border mb-2">
+                                        <label>Эмодзи.
+                                            <div align="right" class="getEmojis"></div>
+                                        </label>
+                                        <input class="emoji_display" name="emoji" value="" style="display: none;">
+                                        <div type="text" name="emoji" class="emoji_render form-control" value="" disabled></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-success mt-1">Создать тикет</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="emojis_custom" style="display: none;"><%- JSON.stringify(emojis) %></div>
+        <div id="tickets_delete" style="display: none;"><%- JSON.stringify(tickets) %></div>
+        <div id="tickets_roles" style="display: none;"><%- roles.replaceAll("'", "′") %></div>
+
+        <div id="ticket_settings" style="display: none;">
+            <div class="modal fade bs-example-modal-lg show ticket_style_settings ticket_overflow" id="command_settings">
+                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 id="panelname" class="modal-title">Настройки</h4>
+                            <i class="fa fa-close" aria-hidden="true" id="ticket_close"></i>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-4 mb-2">
+                                    <button class="rename_embed ticket_button btn btn-bordred-secondary waves-effect waves-light" id="ticket_rename">Переименовать тикет</button>
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <button class="delete_embed ticket_button btn btn-bordred-warning waves-effect waves-light" id="ticket_disable">Отключить тикет</button>
+                                    <button class="delete_embed ticket_button btn btn-bordred-success waves-effect waves-light" id="ticket_enable" style="display:none;">Включить тикет</button>
+                                </div>
+                                <div class="col-4 mb-2">
+                                    <button class="delete_embed ticket_button btn btn-bordred-danger waves-effect waves-light" id="ticket_delete">Удалить тикет</button>
+                                </div>
+                            </div>
+                            <form method="POST">
+                                <input style="display:none" id="ticket_hash" name="hash" value="">
+                                <input style="display:none" name="its" value="edit">
+                                <div id="sgmad">
+                                    <a id="sgma"><i class="fa fa-plus" aria-hidden="true"></i>     Настройки главного сообщения<div class="line"></div></a>
+                                </div>
+                                <div id="sgmadd" style="display:none">
+                                    <a id="sgmac"><i class="fa fa-close" aria-hidden="true"></i>     Настройки главного сообщения<div class="line"></div></a>
+                                </div>
+                                <div id="sgm" style="display:none">
+                                    <div class="row collapsible-content ticket_unset">
+                                        <div class="card-box col-12 mb-1 ticket_box">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 mb-2">
+                                                    <label>Эмодзи.
+                                                        <div align="right" class="getEmojis"></div>
+                                                    </label>
+                                                    <input class="emoji_display" name="emoji" value="" style="display: none;">
+                                                    <div type="text" name="emoji" class="emoji_render form-control" value="" disabled></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-2" style="height:1px"></div>
+                                        <div class="card-box col-12 mb-1 ticket_box">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 mb-2">
+                                                    <label>Главное сообщение</label>
+                                                    <textarea  type="text" class="form-control" id="ticket_message" name="name" required=""></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="meod">
+                                    <a id="meo"><i class="fa fa-plus" aria-hidden="true"></i>     Сообщения<div class="line"></div></a>
+                                </div>
+                                <div id="metd" style="display:none" style="height: 22;">
+                                    <a id="mets"><i class="fa fa-close" aria-hidden="true"></i>     Сообщения<div class="line"></div></a>
+                                </div>
+                                <div id="met" style="display:none">
+                                    <div class="row collapsible-content ticket_unset">
+                                        <div class="card-box col-12 mb-1 ticket_box">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 mb-2">
+                                                    <label>Текстовое сообщение</label>
+                                                    <br>
+                                                    <textarea type="text" class="form-control" id="ticket_message_standart" name="ticket_message_standart" required=""></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-box col-12 mb-1 ticket_box">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 mb-2">
+                                                    <label>Сообщение в embed'e</label>
+                                                    <br>
+                                                    <textarea type="text" class="form-control" id="ticket_message_embed" name="ticket_message_embed" required=""></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="spdmad">
+                                    <a id="spdma"><i class="fa fa-plus" aria-hidden="true"></i>     Настройки прав доступа<div class="line"></div></a>
+                                </div>
+                                <div id="spdadd" style="display:none" style="height: 22;">
+                                    <a id="spdad"><i class="fa fa-close" aria-hidden="true"></i>     Настройки прав доступа<div class="line"></div></a>
+                                </div>
+                                <div id="spd" style="display:none">
+                                    <div class="row collapsible-content ticket_unset">
+                                        <div class="col-12 mb-2" style="height:1px"></div>
+                                        <div class="card-box col-12 mb-1 ticket_box">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 mb-2">
+                                                    <label style="display:none">Закрытие тикета</label>
+                                                    <label class="container">Закрыть тикет может только админ?
+                                                        <input id="ticket_admin" type="checkbox" name="only_admin">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-box col-12 mb-1 ticket_box">
+                                        <div class="row">
+                                            <div class="col-12 col-md-6 mb-2">
+                                                <label>Доступ к тикету.</label>
+                                                <div id="ticket_access"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-2">
+                                    <button type="submit" class="btn btn-bordred-success mt-1">Сохранить</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ticket_delete_div" style="display: none;">
+            <div class="modal fade bs-example-modal-center show ticket_style_delete ticket_overflow">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header"><h4 class="modal-title">Удалить тикет</h4>
+                            <i class="fa fa-close" aria-hidden="true" id="ticket_delete_close"></i>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST">
+                                <input style="display:none" name="its" value="delete">
+                                <input style="display:none" id="ticket_delete_hash" name="hash" value="">
+                                <div class="col-lg-12 mb-0">Вы уверены, что хотите удалить данный тикет?
+                                    <br>
+                                    <button type="submit" class="btn btn-bordred-danger mt-1">Удалить тикет</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ticket_rename_div" style="display: none;">
+            <div class="modal fade bs-example-modal-center show ticket_style_delete ticket_overflow">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Переименовать тикет</h4>
+                            <i class="fa fa-close" aria-hidden="true" id="ticket_rename_close"></i>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST">
+                                <div class="col-lg-12 mb-0">
+                                    <div class="col-12 mt-0">
+                                        <input style="display:none" name="its" value="rename">
+                                        <input style="display:none" id="ticket_rename_hash" name="hash" value="">
+                                        <label class="col-form-label">Название тикета</label>
+                                        <input type="text" class="form-control" id="ticket_rename_name" name="ticket_rename_name" required="">
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-bordred-secondary mt-1">Переименовать тикет</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ticket_disable_div" style="display: none;">
+            <div class="modal fade bs-example-modal-center show ticket_style_delete ticket_overflow">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header"><h4 class="modal-title">Отключить тикет</h4>
+                            <i class="fa fa-close" aria-hidden="true" id="ticket_disable_close"></i>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST">
+                                <input style="display:none" name="its" value="disable">
+                                <input style="display:none" id="ticket_disable_hash" name="hash" value="">
+                                <div class="col-lg-12 mb-0">Вы уверены, что хотите отключить данный тикет?
+                                    <br>
+                                    <button type="submit" class="btn btn-bordred-warning mt-1">Отключить тикет</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ticket_enable_div" style="display: none;">
+            <div class="modal fade bs-example-modal-center show ticket_style_delete ticket_overflow">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header"><h4 class="modal-title">Включить тикет</h4>
+                            <i class="fa fa-close" aria-hidden="true" id="ticket_enable_close"></i>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST">
+                                <input style="display:none" name="its" value="enable">
+                                <input style="display:none" id="ticket_enable_hash" name="hash" value="">
+                                <div class="col-lg-12 mb-0">Вы уверены, что хотите включить данный тикет?
+                                    <br>
+                                    <button type="submit" class="btn btn-bordred-success mt-1">Включить тикет</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="picker" style="display: none;"></div>
+        
+        <script src="<%= cdn_host %>/scpsl/js/metismenu.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="/js/all.js"></script>
+        <script src="/js/etc/selector.js"></script>
+        <script src="/js/etc/select.js"></script>
+        <script>pureScriptSelect('#multiSelect');</script>
+        <script src="/js/etc/emoji.js"></script>
+        <script src="/js/etc/ticket.js"></script>
+
+    </body>
+</html>

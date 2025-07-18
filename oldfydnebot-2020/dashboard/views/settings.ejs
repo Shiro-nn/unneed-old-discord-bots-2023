@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link href="/css/nav.css" rel="stylesheet" type="text/css">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+        <title>fydne</title>
+        <link rel="icon" type="image/png" href="/anime.png" />
+    
+        <!-- CSS JS Fonts Icons-->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="/dist/js/adminlte.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        </head>
+        <div class="navbar-custom navbar-custom-dark">
+            <ul class="list-unstyled topnav-menu float-right mb-0">
+                <% if(!is_logged) {%>
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" d="" href="/login" aria-haspopup="false" aria-expanded="false">
+                        <span>Войти</span>
+                    </a>
+                </li>
+                <%}%>
+                <% if(is_logged) {%>
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.png" alt="avatar" class="rounded-circle" draggable="false">
+                        <span class="pro-user-name ml-1"><%= `${user.username}#${user.discriminator}` %></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown" style="color: #00ffff !important;background: #00000000 !important;background-color: #00000000 !important;">
+                        <a href="/selector" class="dropdown-item notify-item" style="color: #00ffff !important;">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                            <span>Гильдии</span>
+                        </a>
+                        <div class="dropdown-divider"></div><a href="/settings" class="dropdown-item notify-item"><i class="fa fa-gear" aria-hidden="true"></i><span>Настройки</span></a>
+                        <div class="dropdown-divider"></div><a href="/logout" class="dropdown-item notify-item"><i class="fa fa-sign-out" aria-hidden="true"></i><span>Выйти</span></a>
+                    </div>
+                </li>
+                <%}%>
+            </ul>
+            <div class="logo-box" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+                <a href="/" class="logo text-center" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+                    <span class="logo-lg" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+                        <img src="/fydnelogo.png" alt="" width="200px" draggable="false" >
+                    </span>
+                </a>
+            </div>
+        </div>
+        <br><br><br><br><br>
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+	<style>
+        .columns .bot-img {
+        box-shadow: 1px 1px 1px 1px transparent !important;
+        animation: pulse 2s infinite;
+        border-radius: 50%;
+        }
+        ::-webkit-scrollbar {
+        width: 9px;
+        }
+        ::-webkit-scrollbar-thumb {
+        background-color: #18191c;
+        border-radius: 99px;
+        }
+        ::-webkit-scrollbar-track {
+        background-color: #fffb002c;
+        }
+        body {
+        background-color: #000000 !important;
+        background-attachment: fixed !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        color: rgb(172, 172, 0);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        }
+        ::-moz-selection { /* Code for Firefox */
+        color: rgb(156, 156, 0);
+        background: #00000040;
+        border-radius: 15px;
+        }
+        ::selection {
+        color: rgb(156, 156, 0);
+        background: #00000040;
+        }
+        .select-channel {
+          background-color: rgb(156, 156, 0);
+        }
+        </style>
+        <style type="text/css"> 
+            p {
+			font-size: 10pt;
+            }
+            .main-header{
+                display:none
+            }
+        </style>
+    <style>
+        .columns .bot-img {
+        box-shadow: 1px 1px 1px 1px transparent !important;
+        animation: pulse 2s infinite;
+        border-radius: 50%;
+        }
+        ::-webkit-scrollbar {
+        width: 9px;
+        }
+        ::-webkit-scrollbar-thumb {
+        background-color: #18191c;
+        border-radius: 99px;
+        }
+        ::-webkit-scrollbar-track {
+        background-color: #00ffff52;
+        }
+        body {
+        background-color: #000000 !important;
+        background-attachment: fixed !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        color: cyan;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        }
+        ::-moz-selection { 
+        color: cyan;
+        background: #00000040;
+        border-radius: 15px;
+        }
+        ::selection {
+        color: cyan;
+        background: #00000040;
+        }
+        * {
+          cursor: url(/cursors/cyan/standart.cur), crosshair !important;
+        }
+        a, a * {
+          cursor: url(/cursors/cyan/pointer.cur), pointer !important;
+        color: cyan !important;
+        font-size: 17px;
+        }
+        footer, .section-padding, footer *, .section-padding *, #counter, #counter * {
+          cursor: url(/cursors/cyan/standart.cur), crosshair !important;
+        color: cyan !important;
+        }
+        #counter h3, #counter small {
+          cursor: url(/cursors/cyan/select.cur), pointer !important;
+        color: cyan !important;
+        }
+        #counter *::-moz-selection, #counter *::-moz-selection {
+        color: cyan !important;
+        background: #00000040 !important;
+        }
+        #counter *::selection, #counter *::selection {
+        color: cyan !important;
+        background: #00000040 !important;
+        }
+        footer *::-moz-selection, .section-padding *::-moz-selection {
+        color: cyan !important;
+        background: #00000040 !important;
+        }
+        footer *::selection, .section-padding *::selection {
+        color: cyan !important;
+        background: #00000040 !important;
+        }
+        .section-padding h4, .section-padding p, .section-padding h2, footer p {
+          cursor: url(/cursors/cyan/select.cur), pointer !important;
+        color: cyan !important;
+        }
+        select {
+          cursor: url(/cursors/cyan/pointer.cur), pointer !important;
+        color: cyan !important;
+        }
+        textarea {
+          cursor: url(/cursors/cyan/select.cur), pointer !important;
+        color: cyan !important;
+        }
+        img, img *, i, i * {
+          -webkit-touch-callout: none;
+            -webkit-user-select: none;
+             -khtml-user-select: none;
+               -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+        }
+      </style>
+  <body class="hold-transition skin-blue sidebar-mini" oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+
+		<div class="wrapper">
+
+			<!-- The header is the topbar -->
+			<%- include('includes/header') %>
+
+			<!-- The sidebar includes the menu -->
+
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper"style="margin-left: 0px !important;">
+
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1> <%= language.get("UTILS").SETTINGS %> <small> Version 1.0.0-beta </small> </h1>
+				</section>
+
+				<!-- Main content -->
+                <section class="content">
+    
+                    <!-- Info boxes -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><%= language.get("UTILS").YOUR_PROFILE %></h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <form role="form" action="/settings" method="POST">
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><%= language.get("PROFILE_HEADINGS").BIO %></label>
+                                                    <input name="bio" class="form-control" placeholder="<%= user.bio || language.get('NO_BIO') %>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label><%= language.get("PROFILE_HEADINGS").BIRTHDATE %></label>
+                                                    <div class="input-group date">
+                                                        <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="<%= language.printDate(new Date(user.birthdate)) %>">
+                                                    </div>
+                                                    <!-- /.input group -->
+                                                </div>
+                                                <!-- /.form group -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary"><%= language.get("UTILS").UPDATE %></button>
+                                    </div>
+                                </form>
+                            </div>
+                          <!-- /.box -->
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><%= language.get("UTILS").WEBSITE %></h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <form role="form" action="/settings" method="POST">
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><%= language.get("SETTINGS_HEADINGS")[0] %></label>
+                                                    <select class="form-control" name="language">
+                                                        <% if(language.getLang() === "french"){ %>
+                                                            <option selected="selected"><%= language.get("UTILS").FRENCH %></option>
+                                                            <option><%= language.get("UTILS").ENGLISH %></options>
+                                                        <% } else { %>
+                                                        <option><%= language.get("UTILS").FRENCH %></option>
+                                                        <option selected="selected"><%= language.get("UTILS").ENGLISH %></options>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><i class="fa fa-sign-out"> </i><%= language.get("SETTINGS_HEADINGS")[1] %></i></label>
+                                                    <div>
+                                                        <a href="/logout"><button type="button" class="btn btn-danger"><%= language.get("UTILS").DISCONNECT %></button></a>
+                                                    </div>
+                                                    <!-- /.input group -->
+                                                </div>
+                                                <!-- /.form group -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary"><%= language.get("UTILS").UPDATE %></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                    <!-- /.row -->
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+            <%- include('invite/discord') %>
+		</div>
+        <!-- ./wrapper -->
+        <!-- bootstrap datepicker -->
+        <script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <!-- ChartJS -->
+        <script src="/bower_components/chart.js/Chart.js"></script>
+        <script src="/js/anti.js"></script>
+        <script>
+            $(function(){
+                $("#datepicker").datepicker({
+                    autoclose: true
+                });
+            });
+        </script>
+	</body>
+</html>

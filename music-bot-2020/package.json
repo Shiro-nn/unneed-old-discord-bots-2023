@@ -1,0 +1,51 @@
+{
+  "name": "fydne",
+  "version": "9.0.0",
+  "description": "ticket bot",
+  "main": "shard.js",
+  "bin": "shard.js",
+  "pkg": {
+    "assets": [
+      "node_modules/**/*",
+      "dashboard/views/**/*",
+      "dashboard/public/**/*",
+      "**/*"
+    ]
+  },
+  "scripts": {
+    "test": "node fydne.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fydne/fydne.git"
+  },
+  "author": "fydne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fydne/fydne/issues"
+  },
+  "homepage": "https://github.com/fydne/fydne#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "discord.js": "^12.4.1",
+    "ffmpeg-static": "^4.2.3",
+    "lyrics-finder": "^21.0.5",
+    "simple-youtube-api": "^5.1.1",
+    "soundcloud-downloader": "^0.1.6",
+    "string-progressbar": "^1.0.1",
+    "ytdl-core": "^4.5.0",
+    "ytdl-core-discord": "^1.2.5",
+    "bson": "^4.0.4",
+    "child_process": "^1.0.2",
+    "colors-generator": "^0.3.4",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "moment": "^2.26.0",
+    "moment-duration-format": "^2.3.2",
+    "mongoose": "^5.9.20",
+    "node-superfetch": "^0.1.10",
+    "passport": "^0.4.1",
+    "passport-discord": "^0.1.3"
+  }
+}

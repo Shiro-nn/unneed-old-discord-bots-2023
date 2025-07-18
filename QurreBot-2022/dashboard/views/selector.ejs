@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Бот с функциями для модерирования & прослушивания музыки.">
+    <meta name="author" content="fydne">
+    <title>Qurre | Гильдии</title>
+
+    <meta property="og:title" content="Qurre" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bot.fydne.dev" />
+    <meta property="og:image" content="https://bot.fydne.dev/img/qurre_ol.png" />
+    <meta property="og:description" content="Бот с функциями для модерирования & прослушивания музыки." />
+    <meta name="theme-color" content="#2bff00">
+    <link rel="icon" type="image/ico" href="/img/qurre.png" />
+    <link rel="stylesheet" href="/css/guilds.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+    <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+    </head>
+    <body translate="no" oncut="return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+        <%- include('./header/menu') %><br><br><br><br>
+        <div class="q1">
+            <% user.displayedGuilds.forEach(function(guild) { %>
+            <a class="q2" href="<%= guild.settingsUrl %>">
+                <% if (guild.icon) { %>
+                    <img class="q3" src="<%= guild.iconURL %>" onerror="this.src = 'https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.png'">
+                <% } else { %>
+                    <img class="q3" src="/img/avatar.png">
+                <%}%>
+                <hr class="q4">
+                <p class="q5"><%= guild.name %></p>
+                <hr class="q4">
+                <p class="q5"><%= guild.settingsmsg %></p>
+            </a>
+            <% }); %>
+        </div>
+        <script src="/js/all.js"></script>
+        <%- include('./invite/discord') %>
+    </body>
+</html>

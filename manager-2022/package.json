@@ -1,0 +1,38 @@
+{
+  "name": "fydne",
+  "version": "3.0.1",
+  "description": "!",
+  "main": "fydne.js",
+  "bin": "fydne.js",
+  "scripts": {
+    "test": "node fydne.js"
+  },
+  "pkg": {
+    "assets": [
+      "**/*",
+      "node_modules/**/*",
+      "events/**/*",
+      "dashboard/views/**/*",
+      "dashboard/public/**/*"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fydne/fydne.git"
+  },
+  "author": "fydne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fydne/fydne/issues"
+  },
+  "homepage": "https://github.com/fydne/fydne#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chalk": "^4.1.0",
+    "discord-webhook-node": "^1.1.8",
+    "discord.js": "^12.5.1",
+    "ipinfo": "^1.5.1",
+    "mongoose": "^7.4.1",
+    "util": "^0.12.3"
+  }
+}

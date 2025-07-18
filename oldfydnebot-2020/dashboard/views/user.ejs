@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+	<%- include('includes/head') %>
+    <style>
+        .columns .bot-img {
+        box-shadow: 1px 1px 1px 1px transparent !important;
+        animation: pulse 2s infinite;
+        border-radius: 50%;
+        }
+        ::-webkit-scrollbar {
+        width: 9px;
+        }
+        ::-webkit-scrollbar-thumb {
+        background-color: #18191c;
+        border-radius: 99px;
+        }
+        ::-webkit-scrollbar-track {
+        background-color: #fffb002c;
+        }
+        body {
+        background-color: #000000 !important;
+        background-attachment: fixed !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        color: rgb(172, 172, 0);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        }
+        ::-moz-selection { /* Code for Firefox */
+        color: #ff0;
+        background: #00000040;
+        border-radius: 15px;
+        }
+        ::selection {
+        color: #ff0;
+        background: #00000040;
+        }
+        .select-channel {
+          background-color: #ff0;
+        }
+        </style>
+  <body class="hold-transition skin-blue sidebar-mini" oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+
+		<div class="wrapper">
+
+			<!-- The header is the topbar -->
+			<%- include('includes/header') %>
+
+			<!-- The sidebar includes the menu -->
+			<%- include('includes/sidebar') %>
+
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1> <%= userInfos.username %> <small> Version 1.0.0-beta </small> </h1>
+				</section>
+
+				<section class="content">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-green"><i class="fa fa-money"></i></span>
+                    
+                                <div class="info-box-content">
+                                <span class="info-box-text"><%= language.get("PROFILE_HEADINGS").MONEY.substr(2) %></span>
+                                <span class="info-box-number"><%= userInfos.money %></span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-yellow"><i class="fa fa-graduation-cap"></i></span>
+                    
+                                <div class="info-box-content">
+                                        <span class="info-box-text"><%= language.get("PROFILE_HEADINGS").REP.substr(2) %></span>
+                                        <span class="info-box-number"><%= userInfos.rep %></span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
+                    
+                                <div class="info-box-content">
+                                <span class="info-box-text"><%= language.get("PROFILE_HEADINGS").LEVEL.substr(2) %></span>
+                                <span class="info-box-number"><%= userInfos.level %></span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <div class="col-md-12">
+                        <!-- Widget: user widget style 1 -->
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-aqua-active">
+                            <h3 class="widget-user-username"><%= userInfos.tag %></h3>
+                            </div>
+                            <div class="widget-user-image">
+                            <img class="img-circle" src="<%= userInfos.displayAvatarURL %>" alt="User Avatar">
+                            </div>
+                            <div class="box-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="description-block">
+                                        <span class="description-text"><%= userInfos.bio || language.get("NO_BIO") %></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 border-right">
+                                <div class="description-block">
+                                    <h5 class="description-header"><%= language.get("PROFILE_HEADINGS").BIRTHDATE.substr(2) %></h5>
+                                    <span class="description-text"><%= userInfos.birthdate ? language.printDate(new Date(userInfos.birthdate)) : language.get("NO_BIRTHDATE") %></span>
+                                </div>
+                                <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4 border-right">
+                                <div class="description-block">
+                                    <h5 class="description-header"><%= language.get("REGISTERED_FROM") %></h5>
+                                    <span class="description-text"><%= language.printDate(new Date(userInfos.registeredAt)) %></span>
+                                </div>
+                                <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4">
+                                <div class="description-block">
+                                    <h5 class="description-header"><%= language.get("PROFILE_HEADINGS").MARRIED.substr(2) %></h5>
+                                    <span class="description-text"><%= !userInfos.lover ? language.get("NO_PARTNER") : client.users.get(userInfos.lover).tag %></span>
+                                </div>
+                                <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                            </div>
+                        </div>
+                        <!-- /.widget-user -->
+                        </div>
+                        <!-- /.col -->
+				</section>
+			</div>
+            <!-- /.content-wrapper -->
+            
+            <!-- Footer includes credits and version -->
+            <%- include ('includes/footer') %>
+            <%- include('invite/discord') %>
+		</div>
+        <script src="/js/anti.js"></script>
+        <!-- ./wrapper -->
+	</body>
+</html>

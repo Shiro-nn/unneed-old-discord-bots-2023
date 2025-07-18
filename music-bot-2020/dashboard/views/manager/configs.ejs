@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Музыкальный бот">
+        <meta name="author" content="fydne">
+        <title>fydne</title>
+
+        <meta property="og:title" content="fydne" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bot2.fydne.xyz" />
+        <meta property="og:image" content="https://bot2.fydne.xyz/fydne.png" />
+        <meta property="og:description" content="fydne bot - Управление" />
+        <meta name="theme-color" content="#ff0000">
+    
+        <link rel="icon" type="image/ico" href="/fydne.jpg" />
+        <link rel="stylesheet" type="text/css" href="/css/extras.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="stylesheet" type="text/css" href="/css/animate.css">
+        <link rel="stylesheet" type="text/css" href="/fa/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/fa/all.min.css">
+        <link href="/css/style.css" rel="stylesheet">
+        <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/one-page-wonder.min.css" rel="stylesheet">
+        <link href="/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/select2.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/all2.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body class="topbar-dark left-side-menu-dark  pace-done" oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+        <div id="wrapper">
+            <%- include('../header/menu') %>
+            <style>.left-side-men2u{padding:50px 0}</style>
+            <div class="left-side-menu">
+                <div class="slimScrollDiv active" style="position: relative; overflow: hidden; width: auto;">
+                    <div class="slimscroll-menu in" style="overflow: hidden; width: auto;">
+                        <div class="user-box text-center">
+                            <% if (guild.icon) { %>
+                                <img id="<%= guild.id %>1" src="<%= guild.iconURL %>" alt="" title="" class="rounded-circle img-thumbnail avatar-lg" draggable="false" onerror="javascript:imgs('<%= guild.id %>')">
+                                <img id="<%= guild.id %>2" src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.png" style="display: none;" alt="" title="" class="rounded-circle img-thumbnail avatar-lg" draggable="false" draggable="false">
+                            <% } else { %>
+                                <img src="/discord.png" alt="" title="" class="rounded-circle img-thumbnail avatar-lg" draggable="false">
+                            <%}%>
+                            <div class="dropdown">
+                                <a class="text-dark"><%= guild.name %></a>
+                            </div>
+                            <p class="text-muted"><%= membersize %> юзеров</p>
+                        </div>
+                        <div id="sidebar-menu" class="active">
+                            <ul class="metismenu in" id="side-menu">
+                                <li class="menu-title">Навигация</li>
+                                <li>
+                                    <a href="/manage/<%= guild.id %>/configs" class="active">
+                                        <i class="fa fa-folder-o" aria-hidden="true"></i>
+                                        <span>Конфиги сервера</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="slimScrollBar" style="background: rgb(158, 165, 171); width: 8px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 495.664px;"></div>
+                    <div class="slimScrollRail" style="width: 8px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                </div>
+            </div>
+            <div class="content-page">
+                <div class="pace_overlay" style="padding: 0px !important; display: none;">
+                </div>
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card-box card-border">
+                                    <h4 class="header-title mt-0 mb-4">Конфиги сервера</h4>
+                                    <form role="form" method="post">
+                                        <div class="col-12 col-lg-12 mb-2">
+                                            <label>Префикс</label>
+                                            <input type="text" name="prefix" class="form-control" placeholder="<%= guild.prefix %>" style="cursor: url(/cursors/red/select.cur), pointer !important;">
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <label>Цвет embed'ов</label>
+                                            <br>
+                                            <input type="color" id="favcolor" name="favcolor" value="<%= guildData.color %>">
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-bordred-success mt-1 mb-2">Сохранить</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../invite/discord') %>
+        <script src="/js/dev.js"></script>
+        <script src="/vendor/jquery/jquery.min.js"></script>
+        <script src="/js/app.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/anti.js"></script>
+    </body>
+</html>

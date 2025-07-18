@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Бот с функциями для модерирования & прослушивания музыки.">
+        <meta name="author" content="fydne">
+        <title>Qurre | Модули</title>
+        <meta property="og:title" content="Qurre" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bot.fydne.dev" />
+        <meta property="og:image" content="https://bot.fydne.dev/img/qurre_ol.png" />
+        <meta property="og:description" content="Бот с функциями для модерирования & прослушивания музыки." />
+        <meta name="theme-color" content="#2bff00">
+        <link rel="icon" type="image/ico" href="/img/qurre.png" />
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/etc/modules.css">
+        <link rel="stylesheet" href="/css/etc/select.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+    </head>
+    <body class="topbar-dark left-side-menu-dark  pace-done" oncut="return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+        <div id="wrapper">
+            <%- include('../header/menu') %>
+            <%- include('../panel/index') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card-box card-border">
+                                    <h4 class="header-title mt-0 mb-4">Анти-реклама</h4>
+                                    <form role="form" method="post">
+                                        <input type="text" name="anti_ads" style="display: none;">
+                                        <label class="container">Включена ли анти-реклама
+                                            <% if(guildDB.antiAds.enabled){ %>
+                                            <input type="checkbox" checked="checked" name="aa_enable">
+                                            <% }else{ %>
+                                            <input type="checkbox" name="aa_enable">
+                                            <% } %>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <div class="directorist-select directorist-select-multi" id="multiSelect" data-isSearch="true" data-message='Игнорируемые каналы.' data-default='<%- `${guildDB.antiAds.ignored}` %>' data-multiSelect='<%- JSON.stringify(channels) %>' >               
+                                            <input type="hidden" name="aa_channels">
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-bordred-success mt-1 mb-2">Сохранить</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="card-box card-border">
+                                    <h4 class="header-title mt-0 mb-4">Анти-линк</h4>
+                                    <form role="form" method="post">
+                                        <input type="text" name="anti_links" style="display: none;">
+                                        <label class="container">Включен ли анти-линк
+                                            <% if(guildDB.antiLinks.enabled){ %>
+                                            <input type="checkbox" checked="checked" name="al_enable">
+                                            <% }else{ %>
+                                            <input type="checkbox" name="al_enable">
+                                            <% } %>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <div class="directorist-select directorist-select-multi" id="multiSelect2" data-isSearch="true" data-message='Игнорируемые каналы.' data-default='<%- `${guildDB.antiLinks.ignored}` %>' data-multiSelect='<%- JSON.stringify(channels) %>' >               
+                                            <input type="hidden" name="al_channels">
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-bordred-success mt-1 mb-2">Сохранить</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="card-box card-border">
+                                    <h4 class="header-title mt-0 mb-4">Анти-флуд</h4>
+                                    <form role="form" method="post">
+                                        <input type="text" name="anti_flood" style="display: none;">
+                                        <label class="container">Включен ли анти-флуд
+                                            <% if(guildDB.antiflood.enabled){ %>
+                                            <input type="checkbox" checked="checked" name="af_enable">
+                                            <% }else{ %>
+                                            <input type="checkbox" name="af_enable">
+                                            <% } %>
+                                            <span class="checkmark"></span>
+                                        </label><br>
+                                        <h3>Лимит сообщений</h3>
+                                        <div class="number-input">
+                                            <custombut onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></custombut>
+                                            <input class="quantity" min="0" name="af_limit" value="<%= guildDB.antiflood.messagesLimit %>" type="number">
+                                            <custombut onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></custombut>
+                                        </div><br><br>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-bordred-success mt-1 mb-2">Сохранить</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="card-box card-border">
+                                    <h4 class="header-title mt-0 mb-4">Логи</h4>
+                                    <form role="form" method="post">
+                                        <input type="text" name="logs_mod" style="display: none;">
+                                        <div class="col-12 mb-2 logCh">
+                                            <label>Логи</label>
+                                            <select class="form-control" name="logs" style="cursor: url(/cursors/green/pointer.cur), pointer !important;">
+                                                <% if(guild.logs && log_channel){ %>
+                                                    <option selected="selected" value="<%= log_channel.id %>">#<%= log_channel.name %></option>
+                                                    <% all_channels.filter((ch) => ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                                        <option value="<%= ch.id %>">#<%= ch.name %></option>
+                                                    <% }); %>
+                                                        <option>Выключить</option>
+                                                <% } else { %>
+                                                    <option selected="selected">Канал не выбран</option>
+                                                    <% all_channels.filter(ch => ch.type === "GUILD_TEXT").forEach((ch) => { %>
+                                                        <option value="<%= ch.id %>">#<%= ch.name %></option>
+                                                    <% }); %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        <div class="directorist-select directorist-select-multi" id="multiSelect3" data-isSearch="true" data-message='Игнорируемые роли.' data-default='<%- `${guildDB.logs.ignored}` %>' data-multiSelect='<%- JSON.stringify(roles) %>' >               
+                                            <input type="hidden" name="logs_roles">
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-bordred-success mt-1 mb-2">Сохранить</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../invite/discord') %>
+        <script src="<%= cdn_host %>/scpsl/js/metismenu.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="/js/all.js"></script>
+        <script src="/js/etc/selector.js"></script>
+        <script src="/js/etc/select.js"></script>
+        <script>pureScriptSelect('#multiSelect');pureScriptSelect('#multiSelect2');pureScriptSelect('#multiSelect3');</script>
+    </body>
+</html>

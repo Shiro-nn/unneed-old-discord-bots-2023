@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Бот с большим кол-вом команд">
+    <meta name="author" content="">
+    <title>fydne</title>
+    <link rel="icon" type="image/ico" href="/anime.png" />
+    <link rel="stylesheet" type="text/css" href="/css/extras.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/fa/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/fa/all.min.css">
+    <link href="/css/istyle.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/one-page-wonder.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/app.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+    <script type="text/javascript">
+      /* <![CDATA[ */
+       function externalLinks() {
+        links = document.getElementsByTagName("a");
+        for (i=0; i<links.length; i++) {
+          link = links[i];
+          if (link.getAttribute("href") && link.getAttribute("rel") == "external")
+          link.target = "_blank";
+        }
+       }
+       window.onload = externalLinks;
+      /* ]]> */ 
+     </script>
+    <style>
+      .columns .bot-img {
+      box-shadow: 1px 1px 1px 1px transparent !important;
+      animation: pulse 2s infinite;
+      border-radius: 50%;
+      }
+      ::-webkit-scrollbar {
+      width: 9px;
+      }
+      ::-webkit-scrollbar-thumb {
+      background-color: #18191c;
+      border-radius: 99px;
+      }
+      ::-webkit-scrollbar-track {
+      background-color: #00ffff52;
+      }
+      body {
+      background-color: #000000 !important;
+      background-attachment: fixed !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      background-size: cover !important;
+      color: cyan;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      }
+      ::-moz-selection { 
+      color: cyan;
+      background: #00000040;
+      border-radius: 15px;
+      }
+      ::selection {
+      color: cyan;
+      background: #00000040;
+      }
+      * {
+        cursor: url(/cursors/cyan/standart.cur), crosshair !important;
+      }
+      a, a * {
+        cursor: url(/cursors/cyan/pointer.cur), pointer !important;
+      }
+      footer, .section-padding, footer *, .section-padding *, #counter, #counter * {
+        cursor: url(/cursors/cyan/standart.cur), crosshair !important;
+      }
+      #counter h3, #counter small {
+        cursor: url(/cursors/cyan/select.cur), pointer !important;
+      }
+      #counter *::-moz-selection, #counter *::-moz-selection {
+      color: cyan !important;
+      background: #00000040 !important;
+      }
+      #counter *::selection, #counter *::selection {
+      color: cyan !important;
+      background: #00000040 !important;
+      }
+      footer *::-moz-selection, .section-padding *::-moz-selection {
+      color: cyan !important;
+      background: #00000040 !important;
+      }
+      footer *::selection, .section-padding *::selection {
+      color: cyan !important;
+      background: #00000040 !important;
+      }
+      .section-padding h4, .section-padding p, .section-padding h2, footer p {
+        cursor: url(/cursors/cyan/select.cur), pointer !important;
+      }
+      #itsfree::-moz-selection { 
+      color: rgb(194, 194, 0) !important;
+      background: #00000040;
+      border-radius: 15px;
+      }
+      #itsfree::selection {
+      color: rgb(194, 194, 0) !important;
+      background: #00000040;
+      }
+      img, img *, i, i * {
+        -webkit-touch-callout: none;
+          -webkit-user-select: none;
+           -khtml-user-select: none;
+             -moz-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+      }
+    </style>
+    <%- include('./header/menu') %>
+    <header class="masthead text-center text-white">
+      <div class="masthead-content">
+        <div class="container">
+          <img class="img-fluid bot-avatar rounded-circle" src="/anime.png" width="200px" height="200px" alt="">
+          <h3 class="masthead-heading mb-0" style="font-size: 3em !important;">fydne</h3>
+            <br/>
+            <a class="btn" href="/invite" rel="external" role="button">
+              <span>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </span>
+              Пригласи меня
+            </a>
+            <a class="btn" href="/selector" role="button">
+              <span>
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+              </span>
+              Войти
+            </a>
+        </div>
+      </div>
+      
+    </header>
+    <div id="counter">
+      <div class="container">
+        <div id="countertrack" class="row count-to-sec">
+
+          <div class="col-lg-3 col-md-6 col-xs-12 count-one">
+          </div>
+          <div class="col-lg-3 col-md-6 col-xs-12 count-one">
+            <span class="icon">
+              <i class="fa fa-download" aria-hidden="true"></i>
+            </span>
+            <h3 class="timer count-value" data-to="<%= guildsize %>" data-speed="3000"><%= guildsize %></h3>
+            <hr class="width25-divider">
+            <small class="count-title">Серверов</small>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-xs-12 count-one">
+            <span class="icon">
+              <i class="fa fa-users" aria-hidden="true"></i>
+            </span>
+            <h3 class="timer count-value" data-to="<%= usersize %>" data-speed="3000"><%= usersize %></h3>
+            <hr class="width25-divider">
+            <small class="count-title">Юзеров</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="py-5 bg-black">
+      <div class="container">
+        <p class="m-0 text-center text-white small">Copyright &copy; fydne <%= (1900 + new Date().getYear()) %></p>
+      </div>
+    </footer>
+    <script src="/js/anti.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

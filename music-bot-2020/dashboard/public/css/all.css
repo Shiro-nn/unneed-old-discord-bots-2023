@@ -1,0 +1,106 @@
+.columns .bot-img {
+box-shadow: 1px 1px 1px 1px transparent !important;
+animation: pulse 2s infinite;
+border-radius: 50%;
+}
+::-webkit-scrollbar {
+width: 9px;
+}
+::-webkit-scrollbar-thumb {
+background-color: #18191c;
+border-radius: 99px;
+}
+::-webkit-scrollbar-track {
+background-color: #ff0000be;
+}
+body {
+background-color: #000000 !important;
+background-attachment: fixed !important;
+background-position: center !important;
+background-repeat: no-repeat !important;
+background-size: cover !important;
+color: rgb(255, 0, 0);
+font-size: 1rem;
+font-weight: 400;
+line-height: 1.5;
+}
+::-moz-selection { 
+color: rgb(255, 0, 0);
+background: #00000040;
+border-radius: 15px;
+}
+::selection {
+color: rgb(255, 0, 0);
+background: #00000040;
+}
+* {
+  cursor: url(/cursors/red/standart.cur), crosshair !important;
+}
+a, a * {
+  cursor: url(/cursors/red/pointer.cur), pointer !important;
+}
+footer, .section-padding, footer *, .section-padding *, #counter, #counter * {
+  cursor: url(/cursors/red/standart.cur), crosshair !important;
+}
+#counter h3, #counter small {
+  cursor: url(/cursors/red/select.cur), pointer !important;
+}
+#counter *::-moz-selection, #counter *::-moz-selection {
+color: rgb(255, 0, 0) !important;
+background: #00000040 !important;
+}
+#counter *::selection, #counter *::selection {
+color: rgb(255, 0, 0) !important;
+background: #00000040 !important;
+}
+footer *::-moz-selection, .section-padding *::-moz-selection {
+color: rgb(255, 0, 0) !important;
+background: #00000040 !important;
+}
+footer *::selection, .section-padding *::selection {
+color: rgb(255, 0, 0) !important;
+background: #00000040 !important;
+}
+.section-padding h4, .section-padding p, .section-padding h2, footer p {
+  cursor: url(/cursors/red/select.cur), pointer !important;
+}
+#itsfree::-moz-selection { 
+color: rgb(194, 194, 0) !important;
+background: #00000040;
+border-radius: 15px;
+}
+#itsfree::selection {
+color: rgb(194, 194, 0) !important;
+background: #00000040;
+}
+img, img *, i, i * {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+.fa-bars{
+  display: none;
+}
+.btn{
+    cursor: url(/cursors/red/pointer.cur), pointer !important
+}
+body{
+    top:auto!important
+}
+@media (max-width:768px){
+    .button-menu-mobile.disable-btn{
+        display:inline!important
+    }
+    .page-title-main{
+        display:none
+    }
+    .menu_small_block{
+        display:block!important
+    }
+    .menu_small_menu{
+        font-size:24px;color:#fff;padding-top:0!important
+    }
+}

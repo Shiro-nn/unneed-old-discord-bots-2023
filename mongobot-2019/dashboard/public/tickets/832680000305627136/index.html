@@ -1,0 +1,4848 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>fydne - заявки-на-должность-237</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
+.spoiler {
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image * {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 100%;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__reference-symbol {
+    grid-column: 1;
+    border-style: solid;
+    border-width: 2px 0 0 2px;
+    border-radius: 8px 0 0 0;
+    margin-left: 16px;
+    margin-top: 8px;
+}
+
+.chatlog__reference {
+    display: flex;
+    grid-column: 2;
+    margin-left: 1.2em;
+    margin-bottom: 0.25em;
+    font-size: 0.875em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+}
+
+.chatlog__reference-avatar {
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    margin-right: 0.25em;
+}
+
+.chatlog__reference-name {
+    margin-right: 0.25em;
+    font-weight: 600;
+}
+
+.chatlog__reference-link {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatlog__reference-link:hover {
+    text-decoration: none;
+}
+
+.chatlog__reference-content > * {
+    display: inline;
+}
+
+.chatlog__reference-edited-timestamp {
+    margin-left: 0.25em;
+    font-size: 0.8em;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__attachment-container {
+    height: 40px;
+    width: 100%;
+    max-width: 520px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.chatlog__attachment-icon {
+    float: left;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.chatlog__attachment-icon > .a {
+    fill: #f4f5fb;
+    d: path("M50,935a25,25,0,0,1-25-25V50A25,25,0,0,1,50,25H519.6L695,201.32V910a25,25,0,0,1-25,25Z");
+}
+
+.chatlog__attachment-icon > .b {
+    fill: #7789c4;
+    d: path("M509.21,50,670,211.63V910H50V50H509.21M530,0H50A50,50,0,0,0,0,50V910a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50h0V191Z");
+}
+
+.chatlog__attachment-icon > .c {
+    fill: #f4f5fb;
+    d: path("M530,215a25,25,0,0,1-25-25V50a25,25,0,0,1,16.23-23.41L693.41,198.77A25,25,0,0,1,670,215Z");
+}
+
+.chatlog__attachment-icon > .d {
+    fill: #7789c4;
+    d: path("M530,70.71,649.29,190H530V70.71M530,0a50,50,0,0,0-50,50V190a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50Z");
+}
+
+.chatlog__attachment-filesize {
+    color: #72767d;
+    font-size: 12px;
+}
+
+.chatlog__attachment-filename {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__reference-symbol {
+    border-color: #4f545c;
+}
+
+.chatlog__reference {
+    color: #b5b6b8;
+}
+
+.chatlog__reference-link {
+    color: #b5b6b8;
+}
+
+.chatlog__reference-link:hover {
+    color: #ffffff;
+}
+
+.chatlog__reference-edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__attachment-container {
+    background-color: #2f3136;
+    border-color: #292b2f;
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/616697847261298688/a_460227297f7b0d3ab50ada8b5d09a964.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">fydne</div>
+        <div class="preamble__entry">Набор администрации / заявки-на-должность-237</div>
+
+            <div class="preamble__entry preamble__entry--small">&lt;@832676074486759425&gt; | Заявки на должность</div>
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/626106847451152399/33e43290b5c070d267d8b66cb95e1da2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#0773" data-user-id="626106847451152399" style="color: rgb(0,255,255)">fydne</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">16-Apr-21 09:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="832680003526852628" id="message-832680003526852628">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="color: rgb(255, 181, 0); background-color: rgba(255, 181, 0, 0.1);">@Набор Администрации</span>, пользователь создал новый тикет.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832680004591812638" id="message-832680004591812638">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><u><strong>Вот твой канал, <span class="mention" title="Jek Mortin#9453">@Jek Mortin</span></strong></u></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="832680005745770496" id="message-832680005745770496">
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(47,49,54,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace"><strong>Тема тикета:</strong> <span class="pre pre--inline">Заявка на должность</span>
+<div class="quote">Здесь принимаются заявки на должность администрации.
+</div><div class="pre pre--multiline nohighlight">ml
+1. Имя(можно ник).
+2. Ник в игре.
+3. Возраст.
+4. Количество часов, проведённых в игре.
+5. Количество часов, которое вы сможете уделять проекту в день.
+5.1 Со скольки до скольки вы сможете проводить время на сервере.
+6. Есть ли у вас опыт на этой должности?
+7. Хорошо ли вы разбираетесь в админ-панели?
+
+Требования:
+1. Полное знание правил.
+2. Наличие микрофона.
+3. Возраст от 14 лет.
+Или:
+    3.1. Не быть агро-школьником
+    3.2. Иметь *взрослый* голос, по которому можно сказать, что вам &gt;14 лет
+4. Иметь голос, который не предоставляет дискомфорт
+5. Претендент не должен состоять в каких-либо группировках и не иметь предвзятости по отношению к каким-либо игрокам.
+6. Упоминаться в логах минимум 10 дней
+7. ЗАПРЕЩЕНО быть администратором на другом проекте</div></div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="832680010091462657" id="message-832680010091462657">
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(47,49,54,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">Для закрытия тикета, нажмите на <img class="emoji " alt="🔒" title="🔒" src="https://twemoji.maxcdn.com/2/72x72/1f512.png">
+<strong>Закрыть может только администратор</strong></div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="lock" title="lock" src="https://cdn.discordapp.com/emojis/722545677908836372.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 09:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="832681986749366333" id="message-832681986749366333">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">1.Игорь 2.Venos 3.14 4.36часов 5.3-4  5.1 в будни с 21:00 по 1:00 в выходные же с 16:00 по 20:00 6.нет 7.частично</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832682260041957387" id="message-832682260041957387">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">хотел бы стать модератором на сервере ff:off</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/723064110002077727/c9d8e7a173b34e5d7b8bea9c26905131.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="DaNoNe#0690" data-user-id="723064110002077727" style="color: rgb(255,118,0)">DaNoNe</span>
+
+
+        <span class="chatlog__timestamp">17-Apr-21 05:43 AM</span>
+
+            <div class="chatlog__message " data-message-id="832808496986587187" id="message-832808496986587187">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Добрый день, заполните требования.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">17-Apr-21 05:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="832991877636685844" id="message-832991877636685844">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/723064110002077727/c9d8e7a173b34e5d7b8bea9c26905131.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="DaNoNe#0690" data-user-id="723064110002077727" style="color: rgb(255,118,0)">DaNoNe</span>
+
+
+        <span class="chatlog__timestamp">17-Apr-21 05:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="832992675765944330" id="message-832992675765944330">
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/832680000305627136/832992673731182652/Screenshot_3.png">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/832680000305627136/832992673731182652/Screenshot_3.png" alt="Image attachment" title="Image: Screenshot_3.png (17.22 KB)">
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">17-Apr-21 06:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="832995436750176277" id="message-832995436750176277">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">1.правила знаю 2.есть 3.14 3.1.адекватный 3.2.голос вреде нормальный 4.ну вроде голос нормальный  5.нигде не состаю, предвзятостей нет 6.не совсем понимаю данный пункт 7.администратором на других проектах не был</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/723064110002077727/c9d8e7a173b34e5d7b8bea9c26905131.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="DaNoNe#0690" data-user-id="723064110002077727" style="color: rgb(255,118,0)">DaNoNe</span>
+
+
+        <span class="chatlog__timestamp">17-Apr-21 06:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="833003582370480190" id="message-833003582370480190">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Когда будете готовы пройти собеседование?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">17-Apr-21 07:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="833013928183201802" id="message-833013928183201802">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">сегодня в 20:00</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">17-Apr-21 08:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="833037370667565086" id="message-833037370667565086">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">так когда начнется собеседование?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">17-Apr-21 10:14 PM</span>
+
+            <div class="chatlog__message " data-message-id="833057889639464960" id="message-833057889639464960">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833059342659092511" id="message-833059342659092511">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">давайте тогда завтра в 15:00 проведем собеседование</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 01:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="833289077398306816" id="message-833289077398306816">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">если вы можете то можно пораньше провести собеседование</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/723064110002077727/c9d8e7a173b34e5d7b8bea9c26905131.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="DaNoNe#0690" data-user-id="723064110002077727" style="color: rgb(255,118,0)">DaNoNe</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 01:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="833289392269033472" id="message-833289392269033472">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Добрый день, сейчас могу если вы свободны.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 01:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="833290166558654475" id="message-833290166558654475">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">да</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/723064110002077727/c9d8e7a173b34e5d7b8bea9c26905131.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="DaNoNe#0690" data-user-id="723064110002077727" style="color: rgb(255,118,0)">DaNoNe</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 01:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="833290213463556116" id="message-833290213463556116">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Через 5-10 минут сможете?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 01:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="833290230768861275" id="message-833290230768861275">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">да</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/723064110002077727/c9d8e7a173b34e5d7b8bea9c26905131.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="DaNoNe#0690" data-user-id="723064110002077727" style="color: rgb(255,118,0)">DaNoNe</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 01:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="833290267062173696" id="message-833290267062173696">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Хорошо.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833291138190409729" id="message-833291138190409729">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Jek Mortin#9453">@Jek Mortin</span> Перед собеседованием пройдите авторизацию в <span class="mention">#auth</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833291259149418517" id="message-833291259149418517">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">И киньте ссылку на ваш аккаунт Steam</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 01:47 PM</span>
+
+            <div class="chatlog__message " data-message-id="833292768624246814" id="message-833292768624246814">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">что делать если auth не работает</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833293202345558046" id="message-833293202345558046">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><a href="https://steamcommunity.com/profiles/76561199014636197/">https://steamcommunity.com/profiles/76561199014636197/</a></span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(23,26,33,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://steamcommunity.com/profiles/76561199014636197/">
+                                                    <div class="markdown preserve-whitespace">Steam Community :: Venos</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">No information given.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message " data-message-id="833293231985917982" id="message-833293231985917982">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">мой стим</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833293311342018600" id="message-833293311342018600">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а auth</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833293390002257940" id="message-833293390002257940">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">почему то не работает</span>
+
+                                <span class="chatlog__edited-timestamp" title="18-Apr-21 01:50 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 02:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="833302751621808129" id="message-833302751621808129">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">извините что делать если auth не работает</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833302873801621534" id="message-833302873801621534">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/723064110002077727/c9d8e7a173b34e5d7b8bea9c26905131.png" alt="Avatar">
+                <span class="chatlog__reference-name" title="DaNoNe#0690" style="color: rgb(255,118,0)">DaNoNe</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833291138190409729&#39;)">
+                    <span class="chatlog__reference-content">
+<span class="mention" title="Jek Mortin#9453">@Jek Mortin</span> Перед собеседованием пройдите авторизацию в <span class="mention">#auth</span>                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 02:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="833303829147287573" id="message-833303829147287573">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">auth не работает</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 03:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="833318212656824359" id="message-833318212656824359">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">здравствуйте я всё сделал ссылку на Steam прислал и в auth авторизовался что делать дальше?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 03:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="833320492017909784" id="message-833320492017909784">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 03:52 PM</span>
+
+            <div class="chatlog__message " data-message-id="833323985697112074" id="message-833323985697112074">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">так когда начнется собеседование</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/723064110002077727/c9d8e7a173b34e5d7b8bea9c26905131.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="DaNoNe#0690" data-user-id="723064110002077727" style="color: rgb(255,118,0)">DaNoNe</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 04:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="833329921312817202" id="message-833329921312817202">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Добрый день, извиняюсь за свой тон общения, но... У меня много дел, + у меня ещё 3 человека который надо принять + у меня другая работа.</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="suicide" title="suicide" src="https://cdn.discordapp.com/emojis/671334151504527372.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="833377484002820137" id="message-833377484002820137">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Доброго времени суток, <span class="mention" title="Jek Mortin#9453">@Jek Mortin</span>, готовы пройти собеседование?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="833377850412761158" id="message-833377850412761158">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">lf</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833377869354238032" id="message-833377869354238032">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">да</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833377484002820137&#39;)">
+                    <span class="chatlog__reference-content">
+Доброго времени суток, <span class="mention" title="Jek Mortin#9453">@Jek Mortin</span>, готовы пройти собеседование?                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="833378112300384296" id="message-833378112300384296">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">да готов</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="833378145540767794" id="message-833378145540767794">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">минутку</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833378229359345674" id="message-833378229359345674">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">зайдите в войс <span class="mention">#deleted-channel</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833378573066174464" id="message-833378573066174464">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">включите демку всего экрана</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833378709091254274" id="message-833378709091254274">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">всего экрана, не только дискорда</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833378709091254274&#39;)">
+                    <span class="chatlog__reference-content">
+всего экрана, не только дискорда                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="833378936335106088" id="message-833378936335106088">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">что дальше?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="833378955100291093" id="message-833378955100291093">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">может ли SCP 049 убивать игроков, если у них есть панацея?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="833379001959317535" id="message-833379001959317535">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">да</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="833379080308654120" id="message-833379080308654120">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">может ли игрок установить моды на текстурки?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="833379112768897034" id="message-833379112768897034">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">нет</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="833379189947498506" id="message-833379189947498506">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">кто из scp может тимиться с людьми?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="833379226945060896" id="message-833379226945060896">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">079</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="833379273917333504" id="message-833379273917333504">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">кто-то еще?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="833379319476125706" id="message-833379319476125706">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">049</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="833379337389867080" id="message-833379337389867080">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">где игрок может вкл музыку?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="833379788160237618" id="message-833379788160237618">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">только в свободной игре в общем чате и интеркоме нельзя использовать соунпад и музыку</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="833379837506748427" id="message-833379837506748427">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">какие никнеймы запрещены?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="833379977533063170" id="message-833379977533063170">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">пошлые и с не цензурной бранью</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="833380021024325764" id="message-833380021024325764">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">какие-то еще?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="833380236414550016" id="message-833380236414550016">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">с приписками nfs и подобное</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="833380395328077834" id="message-833380395328077834">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">какие-то еще?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833380408082432041" id="message-833380408082432041">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">или все?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="833380568468947014" id="message-833380568468947014">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">нет еще запрещены ники которые копирую ники админов</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="833380689579737100" id="message-833380689579737100">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">какие-то еще?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="833380788493090847" id="message-833380788493090847">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">никнеймы групп еще запрещены</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="833380826116128828" id="message-833380826116128828">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">и какие-то еще?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833380833586970674" id="message-833380833586970674">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">или все?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="833380979912474625" id="message-833380979912474625">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ну еще никнеймы которые содержут в себе рекламу</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="833381014956539957" id="message-833381014956539957">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">представим ситуацию: у тебя маленько сдали нервы: можешь высказать все игроку?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:39 PM</span>
+
+            <div class="chatlog__message " data-message-id="833381353479077908" id="message-833381353479077908">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">у меня не должно быть предвзятое отношение к игроку я не могу его забанить или замьютить без причины</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="833381410864627762" id="message-833381410864627762">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">может ли игрок говорить, что он админ?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="833381442750906399" id="message-833381442750906399">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">нет</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="833381470893506622" id="message-833381470893506622">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Представим ситуацию: Ты нашел читы у игрока, но он просит не банить, просит скинуть киви, ты кидаешь карту, тебе приходит, условно, 15кР, нарушитель говорит, что это он отправил, просит не банить, твои действия</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="833381647117844510" id="message-833381647117844510">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">бан на 50лет подкуп админов строго воспрещен</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="833381689353961502" id="message-833381689353961502">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">что с деньгами будет?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833381744857448488" id="message-833381744857448488">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ну, это не суть важно</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833381771508449310" id="message-833381771508449310">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">допустим, у тебя скрыта роль, к тебе подходит тиммейт и говорит: убееееееееееей меня пжлста, не хочу жить, твои действия</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="833381799819608104" id="message-833381799819608104">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">отправить ему назад</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833382054712311809" id="message-833382054712311809">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">скажу что есть специальная команда для этого и то что убивать его я не буду ибо тимкилинг воспрещен</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/626106847451152399/33e43290b5c070d267d8b66cb95e1da2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#0773" data-user-id="626106847451152399" style="color: rgb(0,255,255)">fydne</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">18-Apr-21 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="833382057181970440" id="message-833382057181970440">
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(47,49,54,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <div class="markdown preserve-whitespace">Jek Mortin</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">Вы получили <strong>3</strong> уровень.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png?size=2048">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png?size=2048" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="833382164971782175" id="message-833382164971782175">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">тебя тимкилит игрок 1, говоря, что его попросил сделать игрок 2, игрок 2 говорит, что это он попросил нарушить правила, твои действия?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="833382676169490443" id="message-833382676169490443">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">сделаю выговор 2,1 забаню за тикилинг ибо нужно читать правила</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="833382823934296135" id="message-833382823934296135">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">сразу в бан?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="833382994827018311" id="message-833382994827018311">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ну я его предупрежу и скажу что бы в следующий раз читал правила</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:46 PM</span>
+
+            <div class="chatlog__message " data-message-id="833383081612279839" id="message-833383081612279839">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Ты-Хаос
+1. Ты видишь двух ученых, у одного из них есть оружие, при этом он не сдается, твои действия?
+2. Ты видишь двух ученых, у одного из них есть оружие, при этом он сдается, твои действия?
+3. Ты видишь двух ученых, они без оружия, но у тебя 1 связывалка, твои действия?
+4. Тебя убил ученый, ты появился за хаос, ты видишь этого ученого, но при этом не видишь его оружие, твои действия?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="833384734301356033" id="message-833384734301356033">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">1.я убью ученого который не здаётся 2.попрошу его бросить оружие если он его не бросит я убью его 3.я свяжу одного а второму скажу чтобы он шел за нами когда мы прийдём к центру эвокуации связаный ученый сбежит а после я свяжу второго затем сбежит 2 ученый 4.попрошу его сдатся если он сдатся я свяжу и выведу его но если у меня не будет связовалки я убью его если он решит не сдаваться я убью его</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="833384824613896213" id="message-833384824613896213">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Ты выкинул крюк-кошку, у тебя ее забрал другой игрок, ты просишь вернуть, а он не возвращает, твои действия?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:54 PM</span>
+
+            <div class="chatlog__message " data-message-id="833385092117692466" id="message-833385092117692466">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">просто уйду от туда и постараюсь в этой игре с ним не пересекаться</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:55 PM</span>
+
+            <div class="chatlog__message " data-message-id="833385230676918277" id="message-833385230676918277">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а если игрок будет жаловаться, что его обокрали, то каковы твои действия, как админа?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:56 PM</span>
+
+            <div class="chatlog__message " data-message-id="833385591269621801" id="message-833385591269621801">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я попрошу игрока вернуть награбленое но если он откажется я ничего с этим поделать не смогу ибо это правилами не запрещено</span>
+
+                                <span class="chatlog__edited-timestamp" title="18-Apr-21 07:57 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 07:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="833385756322955306" id="message-833385756322955306">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4.5 ЗАПРЕЩЕНО воровство</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833385783904960512" id="message-833385783904960512">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Прилетел новый отряд mtf
+1. Командир строит всех к стене, твои действия?
+1.1 Некоторые убежали-он их убил, твои действия?
+2.0.1. Командир дал вежливый приказ: отдать твою черную карту, твои действия.
+2.0.2. Командир дал приказ: о, черная карта? гони, быстро, твои действия.
+2.1.1/2.1.2 Ты ему не дал карту-он тебя убил, твои действия?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:02 PM</span>
+
+            <div class="chatlog__message " data-message-id="833387056981344276" id="message-833387056981344276">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">1.я скажу что это не обязательно так как это не RP сервер 1.1 вначале предупрежу его что тимкилинг запрещен затем забаню его 2.0.1.отдам ему черную карту 2.0.2.скажу ему что я не дам ему черную карту 2.1.1/2.1.2 вначале сдалаю выговор а затем забаню его</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="833387226658373732" id="message-833387226658373732">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><div class="quote">так как это не RP сервер
+</div>а если следуя правилам?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="833388028130885682" id="message-833388028130885682">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">1.тогда построюсь вместе с ними 1.1 предупрежу затем забаню 2.0.1 так же отдам ему карту 2.0.2 я буду вынужден отдать ему карту 2.1.1/2.1.2 также вначале сделаю выговор а затем забаню</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="833388200554135582" id="message-833388200554135582">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4.6 Приказы командира должны быть АДЕКВАТНЫМИ
+
+Командир вправе вас убить, если вы не слушаетесь приказам</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833388315742830672" id="message-833388315742830672">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">в 2.0.2 ему можно не отдавать карту</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833388334604091392" id="message-833388334604091392">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Игрок номер 1 жалуется вам, что его затимкиллил игрок 2, игрок 2 говорит, что это случайность, а игрок 1 говорит, что нет</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="833388645532172318" id="message-833388645532172318">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я забаню игрока 2 так как это в любом случаи тимкилинг</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="833388700418572320" id="message-833388700418572320">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">сразу в бан?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="833389084717350932" id="message-833389084717350932">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ну для начала сделаю выговор 2 и попробую разобратся в ситуации</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="833389124450517043" id="message-833389124450517043">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">далее?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="833389267437748255" id="message-833389267437748255">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">далее форс</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:11 PM</span>
+
+            <div class="chatlog__message " data-message-id="833389339924758598" id="message-833389339924758598">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">SCP-173 ходит с SCP-096, убивая всех, твои действия?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="833389720398069822" id="message-833389720398069822">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я попрошу их разойтись а если они откажутся то я ничего не смогу сделать</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="833389801008660480" id="message-833389801008660480">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Для чего тебе админка?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:16 PM</span>
+
+            <div class="chatlog__message " data-message-id="833390589071982662" id="message-833390589071982662">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я играю на сервере FF:off 2 недели и там многие ведут себя так как будто это NORULES а именно спамят музыкой тимкилят тимятся и так далее а на сервере в это время я ни разу админов не видел так что я хотел бы это остановить</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="833390695422230608" id="message-833390695422230608">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Почему именно этот проект?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833390695422230608&#39;)">
+                    <span class="chatlog__reference-content">
+Почему именно этот проект?                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="833390795918540871" id="message-833390795918540871">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">тут очень много крутых плагинов</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="833390834480709678" id="message-833390834480709678">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Как ты нашел этот сервер?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833390834480709678&#39;)">
+                    <span class="chatlog__reference-content">
+Как ты нашел этот сервер?                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391036876324895" id="message-833391036876324895">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">случайно я просто зашел на этот проект и поиграв на нем около 2 часов он мне понравился</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391129692733441" id="message-833391129692733441">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">знаешь значения следующих слов?:
+логи, закрепы, пинг(в дс), репорты</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391391023431700" id="message-833391391023431700">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я знаю что такое логи репорты</span>
+
+                                <span class="chatlog__edited-timestamp" title="18-Apr-21 08:20 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391449814990938" id="message-833391449814990938">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">закрепы, пинг(в дс)?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833391449814990938&#39;)">
+                    <span class="chatlog__reference-content">
+закрепы, пинг(в дс)?                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391501647020072" id="message-833391501647020072">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">не знаю</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391595876253717" id="message-833391595876253717">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">закрепы - закрепленные сообщения (понятно мое объяснение?)</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833391595876253717&#39;)">
+                    <span class="chatlog__reference-content">
+закрепы - закрепленные сообщения (понятно мое объяснение?)                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391628592742401" id="message-833391628592742401">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">да</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391658263511061" id="message-833391658263511061">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">как посмотреть их знаешь?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833391658263511061&#39;)">
+                    <span class="chatlog__reference-content">
+как посмотреть их знаешь?                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391734661840956" id="message-833391734661840956">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">нет</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391815666827284" id="message-833391815666827284">
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/832680000305627136/833391812902649896/unknown.png">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/832680000305627136/833391812902649896/unknown.png" alt="Image attachment" title="Image: unknown.png (19.36 KB)">
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833391815666827284&#39;)">
+                    <span class="chatlog__reference-content">
+                            <em>Click to see original message</em>
+                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391843542564865" id="message-833391843542564865">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">понял</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391901787947008" id="message-833391901787947008">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">пинг - <span class="mention" title="fydne#1337">@noname</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833391945056649216" id="message-833391945056649216">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">упоминание кого-либо</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833391945056649216&#39;)">
+                    <span class="chatlog__reference-content">
+упоминание кого-либо                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391989440643072" id="message-833391989440643072">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">понял</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="833391995736031302" id="message-833391995736031302">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">на сайте зарегистрирован? 
+<a href="https://scpsl.store/">https://scpsl.store/</a></span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <a class="chatlog__embed-title-link" href="https://scpsl.store/">
+                                                    <div class="markdown preserve-whitespace">fydne</div>
+                                                </a>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">fydne - уникальный проект со своими плагинами, тёплым комьюнити и хорошей администрацией</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://scpsl.store/img/etc/fydne.png">
+                                            <img class="chatlog__embed-thumbnail" src="https://scpsl.store/img/etc/fydne.png" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833391995736031302&#39;)">
+                    <span class="chatlog__reference-content">
+на сайте зарегистрирован? 
+<a href="https://scpsl.store/">https://scpsl.store/</a>                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="833392048777723954" id="message-833392048777723954">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">нет</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="833392064704020530" id="message-833392064704020530">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">зарегистрируйся</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833392064704020530&#39;)">
+                    <span class="chatlog__reference-content">
+зарегистрируйся                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="833392097113407558" id="message-833392097113407558">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">хорошо</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833392064704020530&#39;)">
+                    <span class="chatlog__reference-content">
+зарегистрируйся                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="833393068958154813" id="message-833393068958154813">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я зарегестрировался</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="833393102009139241" id="message-833393102009139241">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">вкл демку</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833393159517765662" id="message-833393159517765662">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">зайди на сайт</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833393276702163004" id="message-833393276702163004">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">f5</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833393361406263326" id="message-833393361406263326">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Jek Mortin#9453">@Jek Mortin</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833393418158866443" id="message-833393418158866443">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833393463402692739" id="message-833393463402692739">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">у тебя какая версия гугла?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833393692349825097" id="message-833393692349825097">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">вы не зарегистрировались, <span class="mention" title="Jek Mortin#9453">@Jek Mortin</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833393692349825097&#39;)">
+                    <span class="chatlog__reference-content">
+вы не зарегистрировались, <span class="mention" title="Jek Mortin#9453">@Jek Mortin</span>                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="833393842929532929" id="message-833393842929532929">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">сейчас я еще раз попробую</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="833393862918930472" id="message-833393862918930472">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">последний пользователь</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/832680000305627136/833393861111840828/unknown.png">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/832680000305627136/833393861111840828/unknown.png" alt="Image attachment" title="Image: unknown.png (58.29 KB)">
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="833394133593751582" id="message-833394133593751582">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">теперь всё получилось</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="833394163746865193" id="message-833394163746865193">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">перейди в настройки</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833394218469949450" id="message-833394218469949450">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">привяжи дискорд</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833394266851639297" id="message-833394266851639297">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833394276959649942" id="message-833394276959649942">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">он привязан</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833394291110969344" id="message-833394291110969344">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833394307708354561" id="message-833394307708354561">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Jek Mortin#9453">@Jek Mortin</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="833394375273873478" id="message-833394375273873478">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">сейчас привяжу</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="833395018488217661" id="message-833395018488217661">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я сам тебе привязал, <span class="mention" title="Jek Mortin#9453">@Jek Mortin</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="833395339826429992" id="message-833395339826429992">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">так отлично</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="833395380431355946" id="message-833395380431355946">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">вернись на сайт</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="833395426602385418" id="message-833395426602385418">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">хорошо</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833395546726465586" id="message-833395546726465586">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">что дальше?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="833395554053521431" id="message-833395554053521431">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">у тебя появилась категория <em>администрация</em></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833395579669315625" id="message-833395579669315625">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">слева</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833395774809309204" id="message-833395774809309204">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">там администраторы+логи</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833395818195189820" id="message-833395818195189820">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">выше, в статистике - твоя статистика</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833395879833763861" id="message-833395879833763861">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">так же в <em>администрация</em> ты можешь посмотреть статистику других админов</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:37 PM</span>
+
+            <div class="chatlog__message " data-message-id="833395940056104970" id="message-833395940056104970">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">понял</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833396014819442708" id="message-833396014819442708">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">это всё?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:38 PM</span>
+
+            <div class="chatlog__message " data-message-id="833396167622656000" id="message-833396167622656000">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention">#отчёты</span> - туда пиши все свои действия в ra</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833396359159742485" id="message-833396359159742485">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">и нажми на крестик</span>
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__attachment">
+                        <div class="" onclick="">
+                            <div class="">
+                                    <a href="https://cdn.discordapp.com/attachments/832680000305627136/833396355598123049/unknown.png">
+                                        <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/832680000305627136/833396355598123049/unknown.png" alt="Image attachment" title="Image: unknown.png (44.89 KB)">
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833396410871185448" id="message-833396410871185448">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">не этот</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833396424774254652" id="message-833396424774254652">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">и это не крестик</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833396469084061696" id="message-833396469084061696">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention">#&#128214;правила-администрации</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833396491221336065" id="message-833396491221336065">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">с этим тоже ознакомься</span>
+
+                                <span class="chatlog__edited-timestamp" title="18-Apr-21 08:40 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833396491221336065&#39;)">
+                    <span class="chatlog__reference-content">
+с этим тоже ознакомься                    </span>
+
+                        <span class="chatlog__reference-edited-timestamp" title="18-Apr-21 08:40 PM">(edited)</span>
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="833396549215977512" id="message-833396549215977512">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">[jhjij</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833396571650392064" id="message-833396571650392064">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">хорошо</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="833396603058126848" id="message-833396603058126848">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">есть еще какие-либо вопросы?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="833396744216641606" id="message-833396744216641606">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">что такое ra</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833396761124274206" id="message-833396761124274206">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="833396777973055509" id="message-833396777973055509">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">remote admin</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833396837082988567" id="message-833396837082988567">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">админка на [m]</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="833396884948779029" id="message-833396884948779029">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а понял</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:41 PM</span>
+
+            <div class="chatlog__message " data-message-id="833396936371208203" id="message-833396936371208203">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">набор можно завершать?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833396936371208203&#39;)">
+                    <span class="chatlog__reference-content">
+набор можно завершать?                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="833396972509593630" id="message-833396972509593630">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">да</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="833397037356810270" id="message-833397037356810270">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">окей, если будут еще вопросы, то спрашивайте у других админов в <span class="mention">#&#128295;чат-админов</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;833397037356810270&#39;)">
+                    <span class="chatlog__reference-content">
+окей, если будут еще вопросы, то спрашивайте у других админов в <span class="mention">#&#128295;чат-админов</span>                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/832676074486759425/971701d18c6cdd388c146bea8a17bc7d.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Jek Mortin#9453" data-user-id="832676074486759425" style="color: rgb(155,255,0)">Jek Mortin</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="833397082936049704" id="message-833397082936049704">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">хорошо</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="833397155368009832" id="message-833397155368009832">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">досвидание</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">18-Apr-21 08:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="833397183704465429" id="message-833397183704465429">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img class="emoji emoji--large" alt="cir_wave" title="cir_wave" src="https://cdn.discordapp.com/emojis/780290378547855370.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/626106847451152399/33e43290b5c070d267d8b66cb95e1da2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#0773" data-user-id="626106847451152399" style="color: rgb(0,255,255)">fydne</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">18-Apr-21 08:50 PM</span>
+
+            <div class="chatlog__message " data-message-id="833399199562465301" id="message-833399199562465301">
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(47,49,54,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">Сохранение логов...</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 177 message(s)</div>
+</div>
+
+</body>
+
+</html>

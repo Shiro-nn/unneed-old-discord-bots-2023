@@ -1,0 +1,22 @@
+{
+  "name": "rainbowbot",
+  "version": "1.0.0",
+  "description": "Randomly changes peoples discord role color.",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rainbow",
+    "bot",
+    "discord",
+    "role"
+  ],
+  "author": "fydne",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "leeks.js": "0.0.9",
+    "leekslazylogger": "^2.0.3",
+    "randomcolor": "^0.5.3"
+  }
+}

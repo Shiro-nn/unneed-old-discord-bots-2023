@@ -1,0 +1,52 @@
+<style>.scroll:hover, .sidebar-enable #wrapper .left-side-menu *{overflow:auto;} .img{
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #3b4452;
+    border-color: #434e5e;
+    border: 5px solid #434e5e;
+    background-size: cover;
+    background-position: 50%;
+    }</style>
+<div class="left-side-menu">
+    <div class="slimScrollDiv active scroll" style="position: relative; width: auto;">
+        <div class="slimscroll-menu in scroll" style="width: auto;">
+            <div class="user-box text-center">
+                <div class="img" id="avatar_panel" style="background-image: url('<%= guild.iconURL %>');">
+                    <img src="<%= guild.iconURL %>" onerror="document.getElementById('avatar_panel').style = 
+                    'background-image: url(\'https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.png\');'; document.getElementById('avatar_panel').innerHTML = '';"
+                    onload="document.getElementById('avatar_panel').innerHTML = '';">
+                </div>
+                <div class="dropdown">
+                    <a><%= guild.name %></a>
+                </div>
+                <p class="text-muted"><%= guild.memberCount %> юзеров</p>
+            </div>
+            <div id="sidebar-menu">
+                <ul class="metismenu in" id="side-menu">
+                    <li class="menu-title">Навигация</li>
+                    <li>
+                        <a href="/manage/<%= guild.id %>">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            <span>Настройки</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/manage/<%= guild.id %>/modules">
+                            <i class="fa fa-gears" aria-hidden="true"></i>
+                            <span>Модули</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/manage/<%= guild.id %>/tickets">
+                            <i class="fa fa-ticket" aria-hidden="true"></i>
+                            <span>Тикеты</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

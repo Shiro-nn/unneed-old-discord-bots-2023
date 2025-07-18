@@ -1,0 +1,46 @@
+{
+  "name": "qurre",
+  "version": "1.0.0",
+  "description": "ticket bot",
+  "main": "shard.js",
+  "bin": "shard.js",
+  "pkg": {
+    "assets": [
+      "node_modules/**/*",
+      "**/*"
+    ]
+  },
+  "scripts": {
+    "test": "node Qurre.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fydne/fydne.git"
+  },
+  "author": "fydne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fydne/fydne/issues"
+  },
+  "homepage": "https://github.com/fydne/fydne#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "@k3rn31p4nic/google-translate-api": "^1.1.1",
+    "bson": "^4.0.4",
+    "chalk": "^4.1.2",
+    "child_process": "^1.0.2",
+    "colors-generator": "^0.3.4",
+    "cpu-stat": "^2.0.1",
+    "discord.js": "^12.4.1",
+    "distube": "^2.8.18",
+    "dot-prop": "^6.0.1",
+    "ffmpeg-static": "^4.2.3",
+    "google-translate-api": "^2.3.0",
+    "lyrics-finder": "^21.0.5",
+    "mal-scraper": "^2.11.3",
+    "mongoose": "^5.12.8",
+    "node-superfetch": "^0.1.10",
+    "opusscript": "^0.0.8",
+    "string-progressbar": "^1.0.1"
+  }
+}

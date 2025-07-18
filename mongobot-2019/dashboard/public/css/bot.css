@@ -1,0 +1,44 @@
+::selection {
+color: cyan;
+background: #00000040;
+}
+::-webkit-scrollbar {
+width: 9px;
+}
+::-webkit-scrollbar-thumb {
+background-color: #18191c;
+border-radius: 99px;
+}
+::-webkit-scrollbar-track {
+background-color: cyan;
+}
+body{
+-moz-background-size: 100%;
+-webkit-background-size: 100%;
+-o-background-size: 100%;
+background-size: 100%;
+background-repeat: no-repeat;
+display: block;
+background-color:#0b0c0c !important;color: #fff !important; background-image: url(https://media.discordapp.net/attachments/676095371147214878/763808843230085140/bigfydnelogo.gif) !important}
+
+.container{
+-moz-background-size: 100%;
+-webkit-background-size: 100%;
+-o-background-size: 100%;
+background-size: 100%;
+background-repeat: no-repeat;
+display: block;
+background-color:#0b0c0c00 !important;color: #fff !important;}
+
+
+
+div.controller.ng-scope * {
+  background-color:#ffffff00 !important;
+}
+
+div.floating-status-overview.cf.status-page-overview, #loader-overlay {
+  background-color:#ffffff00 !important;
+}
+#page-container {
+  background: #00000000;
+}

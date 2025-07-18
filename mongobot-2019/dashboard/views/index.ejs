@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Бот с удобными тикетами, хента.. и т.п">
+    <meta name="author" content="">
+    <title>fydne</title>
+
+    <meta property="og:title" content="fydne" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bot.fydne.xyz" />
+    <meta property="og:image" content="https://bot.fydne.xyz/fydne.png" />
+    <meta property="og:description" content="fydne bot - Главная" />
+    <meta name="theme-color" content="#ff0000">
+
+    <link rel="icon" type="image/ico" href="/fydne.png" />
+    <link rel="stylesheet" type="text/css" href="/css/extras.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/fa/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/fa/all.min.css">
+    <link href="/css/istyle.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/one-page-wonder.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/app.min.css" rel="stylesheet" type="text/css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+    <script type="text/javascript">
+      /* <![CDATA[ */
+       function externalLinks() {
+        links = document.getElementsByTagName("a");
+        for (i=0; i<links.length; i++) {
+          link = links[i];
+          if (link.getAttribute("href") && link.getAttribute("rel") == "external")
+          link.target = "_blank";
+        }
+       }
+       window.onload = externalLinks;
+      /* ]]> */ 
+     </script>
+    <style>
+      .columns .bot-img {
+      box-shadow: 1px 1px 1px 1px transparent !important;
+      animation: pulse 2s infinite;
+      border-radius: 50%;
+      }
+      ::-webkit-scrollbar {
+      width: 9px;
+      }
+      ::-webkit-scrollbar-thumb {
+      background-color: #18191c;
+      border-radius: 99px;
+      }
+      ::-webkit-scrollbar-track {
+      background-color: #00ffff52;
+      }
+      body {
+      background-color: #000000 !important;
+      background-attachment: fixed !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      background-size: cover !important;
+      color: cyan;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      }
+      ::-moz-selection { 
+      color: cyan;
+      background: #00000040;
+      border-radius: 15px;
+      }
+      ::selection {
+      color: cyan;
+      background: #00000040;
+      }
+      * {
+        cursor: url(/cursors/cyan/standart.cur), crosshair !important;
+      }
+      a, a * {
+        cursor: url(/cursors/cyan/pointer.cur), pointer !important;
+      }
+      footer, .section-padding, footer *, .section-padding *, #counter, #counter * {
+        cursor: url(/cursors/cyan/standart.cur), crosshair !important;
+      }
+      #counter h3, #counter small {
+        cursor: url(/cursors/cyan/select.cur), pointer !important;
+      }
+      #counter *::-moz-selection, #counter *::-moz-selection {
+      color: cyan !important;
+      background: #00000040 !important;
+      }
+      #counter *::selection, #counter *::selection {
+      color: cyan !important;
+      background: #00000040 !important;
+      }
+      footer *::-moz-selection, .section-padding *::-moz-selection {
+      color: cyan !important;
+      background: #00000040 !important;
+      }
+      footer *::selection, .section-padding *::selection {
+      color: cyan !important;
+      background: #00000040 !important;
+      }
+      .section-padding h4, .section-padding p, .section-padding h2, footer p {
+        cursor: url(/cursors/cyan/select.cur), pointer !important;
+      }
+      #itsfree::-moz-selection { 
+      color: rgb(194, 194, 0) !important;
+      background: #00000040;
+      border-radius: 15px;
+      }
+      #itsfree::selection {
+      color: rgb(194, 194, 0) !important;
+      background: #00000040;
+      }
+      img, img *, i, i * {
+        -webkit-touch-callout: none;
+          -webkit-user-select: none;
+           -khtml-user-select: none;
+             -moz-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+      }
+      .fa-bars{
+        display: none;
+      }
+    </style>
+    <%- include('header/menu') %>
+    <header class="masthead text-center text-white">
+      <div class="masthead-content">
+        <div class="container">
+            <img class="img-fluid bot-avatar rounded-circle" src="/fydne.gif" width="200px" height="200px" alt="" draggable="false">
+          <h3 class="masthead-heading mb-0" style="font-size: 3em !important;">fydne</h3>
+            <br/>
+            <a class="btn" href="/invite" rel="external" role="button">
+              <span>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </span>
+              Пригласи меня
+            </a>
+            <a class="btn" href="/selector" role="button">
+              <span>
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+              </span>
+              Управление
+            </a>
+        </div>
+      </div>
+      
+    </header>
+    <div id="feature" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title wow fadeInDown animated" data-wow-delay="0.3s">Особенности</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <div class="featured-box-item">
+                        <div class="featured-icon">
+                          <i class="fa fa-edit" aria-hidden="true"></i>
+                        </div>
+                        <div class="featured-content">
+                            <h4>Легкая настройка</h4>
+                            <p>Легко все настроить прямо на сайте</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <div class="featured-box-item">
+                        <div class="featured-icon">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </div>
+                        <div class="featured-content">
+                            <h4>Настройка</h4>
+                            <p>Настройте почти каждый аспект вашего тикета</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                <div class="featured-box-item">
+                    <div class="featured-icon">
+                      <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="featured-content">
+                        <h4>Логи</h4>
+                        <p>Создайте логи ваших тикетов для последующего просмотра</p>
+                    </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 col-xs-12"></div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <div class="featured-box-item">
+                        <div class="featured-icon">
+                          <i class="fa fa-dollar" aria-hidden="true"></i>
+                        </div>
+                        <div class="featured-content">
+                            <h4>Бесплатно</h4>
+                            <p>И да, это абсолютно <a id='itsfree' style='color: #ff0 !important; cursor: url(/cursors/yellow/select.cur), pointer !important;'>бесплатно</a></p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="counter">
+            <div class="container">
+              <div id="countertrack" class="row count-to-sec">
+
+                <div class="col-lg-3 col-md-6 col-xs-12 count-one">
+                  <span class="icon">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                  </span>
+                  <h3 class="timer count-value" data-to="<%= guildsize %>" data-speed="3000"><%= guildsize %></h3>
+                  <hr class="width25-divider">
+                  <small class="count-title">Серверов</small>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-xs-12 count-one">
+                  <span class="icon">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                  </span>
+                  <h3 class="timer count-value" data-to="<%= usersize %>" data-speed="3000"><%= usersize %></h3>
+                  <hr class="width25-divider">
+                  <small class="count-title">Юзеров</small>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-xs-12 count-one">
+                  <span class="icon">
+                    <i class="fa fa-ticket" aria-hidden="true"></i>
+                  </span>
+                  <h3 class="timer count-value" data-to="<%= ticketsopen %>" data-speed="3000"><%= ticketsopen %></h3>
+                  <hr class="width25-divider">
+                  <small class="count-title">Открыто тикетов</small>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-xs-12 count-one">
+                  <span class="icon">
+                    <i aria-hidden="true"><img src="/anime.png" width="50px" height="50px" alt="" title="" draggable="false"></i>
+                  </span>
+                  <h3 class="timer count-value" data-to="<%= hentaisend %>" data-speed="3000"><%= hentaisend %></h3>
+                  <hr class="width25-divider">
+                  <small class="count-title">Хентая отправлено</small>
+                </div>
+
+              </div>
+            </div>
+          </div>
+    <%- include('invite/discord') %>
+  </div>
+  <script src="/js/dev.js"></script>
+  <script src="/js/anti.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

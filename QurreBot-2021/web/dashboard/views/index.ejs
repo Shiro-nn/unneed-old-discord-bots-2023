@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Бот с функциями для модерирования & прослушивания музыки.">
+    <meta name="author" content="Qurre">
+    <meta name="keywords" content="Qurre, Discord, Bot, DiscordBot, Discord Bot">
+    <title>Qurre</title>
+
+    <meta property="og:title" content="Qurre" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bot.fydne.xyz" />
+    <meta property="og:image" content="https://bot.fydne.xyz/img/qurre_ol.png" />
+    <meta property="og:description" content="Бот с функциями для модерирования & прослушивания музыки." />
+    <meta name="theme-color" content="#2bff00">
+
+    <link rel="icon" type="image/ico" href="/img/qurre.png" />
+    
+    <link rel="stylesheet" href="/css/instyle.css">
+    <link rel="stylesheet" href="/css/index_two.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="<%= cdn_host %>/scpsl.store/css/font-awesome.min.css">
+    <script src="<%= cdn_host %>/scpsl.store/js/jquery/jquery.min.js"></script>
+  </head>
+  <body translate="no" oncut="return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+    <%- include('./header/menu') %>
+    <div id="mainall">
+        <section id="main">
+            <div class="about">
+              <img src="/img/Qurre.gif" alt="" class="img-fluid" style="max-width: 300px;">
+                <h1 class="heading">Qurre</h1>
+                <p id="text1">Бот для модерирования<br>& прослушивания музыки.</p>
+                <a class="btn" onclick="document.location = '/guilds'">Гильдии</a>
+            </div>
+        </section>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="mod one">
+                <div style="margin-top: 80px;">
+                    <h1 class="heading fs120">Тикеты</h1>
+                    <p class="desc">Крайне полезная вещь для серверов. Настройте почти каждый аспект вашего тикета.</p>
+                </div>
+            </div>
+            <div class="mod two">
+                <div class="row img-title-top" style="margin-top: 60px;">
+                    <img src="<%= cdn_host %>/bot/index1.png" alt="" class="img-fluid i1">
+                </div>
+            </div>
+            <div class="mod four">
+                <div style="margin-top: 80px;">
+                    <h1 class="heading fs100">Анти-флуд</h1>
+                    <p class="desc">Удаляет сообщение, если оно повторяется определенное количество раз<i>(настраивается в настройках)</i> за 30 секунд.</p>
+                </div>
+            </div>
+            <div class="mod three" style="margin-top: 100px;">
+                <div class="row img-title-top">
+                    <img src="<%= cdn_host %>/bot/index2.png" alt="" class="img-fluid i2">
+                </div>
+            </div>
+            <div class="mod five">
+                <div style="margin-top: 80px;">
+                    <h1 class="heading fs120">Анти-Реклама</h1>
+                    <p class="desc">Удаляет ссылки-приглашения на другие сервера в Discord.<br><i>Не распространяется на тех, кто владеет правами управления сообщениями.</i></p>
+                </div>
+            </div>
+            <div class="mod six">
+                <div class="row img-title-top" style="margin-top: 150px;">
+                    <img src="<%= cdn_host %>/bot/index3.png" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="mod eight">
+                <div style="margin-top: 80px;">
+                    <h1 class="heading fs120">Анти-Линк</h1>
+                    <p class="desc">Удаляет ссылки.<br><i>Не распространяется на тех, кто владеет правами управления сообщениями.</i></p>
+                </div>
+            </div>
+            <div class="mod seven">
+                <div class="row img-title-top" style="margin-top: 180px;">
+                    <img src="<%= cdn_host %>/bot/index4.png" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+    <script src="/js/all.js"></script>
+    <%- include('./invite/discord') %>
+  </body>
+</html>

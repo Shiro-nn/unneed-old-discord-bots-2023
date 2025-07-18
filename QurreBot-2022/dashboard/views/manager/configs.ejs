@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Бот с функциями для модерирования & прослушивания музыки.">
+        <meta name="author" content="fydne">
+        <title>Qurre | Настройки</title>
+        <meta property="og:title" content="Qurre" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bot.fydne.dev" />
+        <meta property="og:image" content="https://bot.fydne.dev/img/qurre_ol.png" />
+        <meta property="og:description" content="Бот с функциями для модерирования & прослушивания музыки." />
+        <meta name="theme-color" content="#2bff00">
+        <link rel="icon" type="image/ico" href="/img/qurre.png" />
+        <link href="<%= cdn_host %>/scpsl/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<%= cdn_host %>/scpsl/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/css/etc/settings.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/etc/colors.min.css">
+        <link rel="stylesheet" href="<%= cdn_host %>/scpsl/css/font-awesome.min.css">
+        <script src="<%= cdn_host %>/scpsl/js/jquery/jquery.min.js"></script>
+    </head>
+    <body class="topbar-dark left-side-menu-dark  pace-done" oncut="return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+        <div id="wrapper">
+            <%- include('../header/menu') %>
+            <%- include('../panel/index') %>
+            <div class="content-page">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card-box card-border">
+                                    <h4 class="header-title mt-0 mb-4">Конфиги сервера</h4>
+                                    <form role="form" method="post">
+                                        <div class="col-12 col-lg-12 mb-2">
+                                            <label>Префикс</label>
+                                            <input type="text" name="prefix_" class="form-control" placeholder="<%= guildDB.prefix %>">
+                                        </div>
+                                        <div class="col-12 mb-2">
+                                            <label>Цвет embed'ов</label>
+                                            <br>
+                                            <input type="text" id="favcolor" name="favcolor" value="<%= guildDB.color %>">
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-bordred-success mt-1 mb-2">Сохранить</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../invite/discord') %>
+        <script src="<%= cdn_host %>/scpsl/js/metismenu.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/slimscroll.min.js"></script>
+        <script src="<%= cdn_host %>/scpsl/js/app.js"></script>
+        <script src="/js/all.js"></script>
+        <script src="/js/etc/colors.min.js"></script>
+        <script>
+        let picker = new CP(document.getElementById('favcolor'));
+        picker.on('change', function(r, g, b) {
+            this.source.value = this.color(r, g, b);
+            document.getElementById('favcolor').style = `background-color: ${this.color(r, g, b)}; color: ${this.color(r, g, b)};`;
+        });
+        </script>
+    </body>
+</html>

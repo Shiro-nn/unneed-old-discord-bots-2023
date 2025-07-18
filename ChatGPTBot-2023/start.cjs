@@ -1,0 +1,1 @@
+import('./init.mjs').then((app) => app.default());

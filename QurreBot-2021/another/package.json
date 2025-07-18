@@ -1,0 +1,16 @@
+{
+  "name": "another",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Qurre.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "discord.js": "^12.5.3",
+    "mongoose": "^6.0.10"
+  }
+}

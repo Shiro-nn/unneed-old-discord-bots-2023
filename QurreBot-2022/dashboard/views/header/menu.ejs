@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/css/etc/fonts.css">
+<div class="navbar-custom navbar-custom-dark">
+    <ul class="list-unstyled topnav-menu float-right mb-0">
+        <% if(!is_logged) {%>
+        <li class="dropdown notification-list">
+            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" d="" href="/login" aria-haspopup="false" aria-expanded="false">
+                <span>Войти</span>
+            </a>
+        </li>
+        <%}%>
+        <% if(is_logged) {%>
+        <li class="dropdown notification-list">
+            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" id="show_pc_click" role="button" aria-haspopup="false" aria-expanded="false">
+                <% if(user.avatar){ %>
+                    <img class="rounded-circle" src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.gif" onerror="this.src = 'https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.png'">
+                <% }else{ %>
+                    <img src="/img/avatar.png" alt="avatar" class="rounded-circle" draggable="false">
+                <% } %>
+                <span class="pro-user-name ml-1"><%= `${user.username}#${user.discriminator}` %></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right profile-dropdown" id="show_pc" style="color: #2bff00 !important;background: #00000000 !important;background-color: #00000000 !important;">
+                <a class="dropdown-item notify-item" id="btn-logout" href="/logout">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <span>Выйти</span>
+                </a>
+            </div>
+        </li>
+        <%}%>
+    </ul>
+    <div class="logo-box" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+        <a href="/" class="logo text-center" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+            <span class="logo-lg" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+                <h1 style="font-family: NeonDL; color: #2bff00;" alt="" width="200px" draggable="false">Qurre</h1>
+            </span>
+        </a>
+    </div>
+    <ul style="position:fixed;top:20px;left:50%;margin-left:-91.5px;display:none" class="list-unstyled menu_small_block">
+        <li style="display:none" class="menu_small_block">
+            <a data-toggle="dropdown" id="show_mobile_click" role="button" aria-haspopup="false" aria-expanded="false">
+                <img src="/img/qurre-web-logo.png" alt="" height="30vh">
+                <i class="fa fa-chevron-down text-white"></i>
+            </a>
+            <div style="width:250px!important" class="dropdown-menu dropdown-menu-left profile-dropdown" id="show_mobile">
+                <a href="/" class="dropdown-item notify-item">
+                    <span>Главная</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="/guilds" class="dropdown-item notify-item"><span>Гильдии</span></a>
+            </div>
+        </li>
+    </ul>
+    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+        <li></li>
+        <li><a href="/guilds" class="page-title-main" style="color: #2bff00;">Гильдии</a></li>
+    </ul>
+    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+        <li>
+            <button class="button-menu-mobile disable-btn waves-effect menu_small_menu">
+                <i class="fa fa-bars"></i>
+            </button>
+        </li>
+    </ul>
+</div>
+<script src="/js/navbar.js"></script>

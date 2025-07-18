@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="/css/nav.css" rel="stylesheet" type="text/css">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+        <title>fydne</title>
+        <link rel="icon" type="image/png" href="/anime.png" />
+    
+        <!-- CSS JS Fonts Icons-->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="/dist/js/adminlte.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        </head>
+        <body oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+	<style>
+        .columns .bot-img {
+        box-shadow: 1px 1px 1px 1px transparent !important;
+        animation: pulse 2s infinite;
+        border-radius: 50%;
+        }
+        ::-webkit-scrollbar {
+        width: 9px;
+        }
+        ::-webkit-scrollbar-thumb {
+        background-color: #18191c;
+        border-radius: 99px;
+        }
+        ::-webkit-scrollbar-track {
+        background-color: #fffb002c;
+        }
+        body {
+        background-color: #000000 !important;
+        background-attachment: fixed !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        color: rgb(172, 172, 0);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        }
+        ::-moz-selection { /* Code for Firefox */
+        color: rgb(156, 156, 0);
+        background: #00000040;
+        border-radius: 15px;
+        }
+        ::selection {
+        color: rgb(156, 156, 0);
+        background: #00000040;
+        }
+        .select-channel {
+          background-color: rgb(156, 156, 0);
+        }
+        </style>
+        <style type="text/css"> 
+            p {
+			font-size: 10pt;
+            }
+            .main-header{
+                display:none
+            }
+        </style>
+  <body class="hold-transition skin-blue sidebar-mini" oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+
+		<div class="wrapper">
+
+			<!-- The header is the topbar -->
+			<div class="navbar-custom navbar-custom-dark">
+                <ul class="list-unstyled topnav-menu float-right mb-0">
+                    <% if(!is_logged) {%>
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" d="" href="/login" aria-haspopup="false" aria-expanded="false">
+                            <span>Войти</span>
+                        </a>
+                    </li>
+                    <%}%>
+                    <% if(is_logged) {%>
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <img src="https://cdn.discordapp.com/avatars/<%= user.id %>/<%= user.avatar %>.png" alt="avatar" class="rounded-circle" draggable="false">
+                            <span class="pro-user-name ml-1"><%= `${user.username}#${user.discriminator}` %></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown" style="color: #00ffff !important;background: #00000000 !important;background-color: #00000000 !important;">
+                            <a href="/selector" class="dropdown-item notify-item" style="color: #00ffff !important;">
+                                <i class="fa fa-user-o" aria-hidden="true"></i>
+                                <span>Гильдии</span>
+                            </a>
+                            <div class="dropdown-divider"></div><a href="/settings" class="dropdown-item notify-item"><i class="fa fa-gear" aria-hidden="true"></i><span>Настройки</span></a>
+                            <div class="dropdown-divider"></div><a href="/logout" class="dropdown-item notify-item"><i class="fa fa-sign-out" aria-hidden="true"></i><span>Выйти</span></a>
+                        </div>
+                    </li>
+                    <%}%>
+                </ul>
+                <div class="logo-box" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+                    <a href="/" class="logo text-center" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+                        <span class="logo-lg" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+                            <img src="/fydnelogo.png" alt="" width="200px" draggable="false" >
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <br><br><br><br><br>
+			<!-- The sidebar includes the menu -->
+
+            <style>
+                .columns .bot-img {
+                box-shadow: 1px 1px 1px 1px transparent !important;
+                animation: pulse 2s infinite;
+                border-radius: 50%;
+                }
+                ::-webkit-scrollbar {
+                width: 9px;
+                }
+                ::-webkit-scrollbar-thumb {
+                background-color: #18191c;
+                border-radius: 99px;
+                }
+                ::-webkit-scrollbar-track {
+                background-color: #00ffff52;
+                }
+                body {
+                background-color: #000000 !important;
+                background-attachment: fixed !important;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
+                color: cyan;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                }
+                ::-moz-selection { 
+                color: cyan;
+                background: #00000040;
+                border-radius: 15px;
+                }
+                ::selection {
+                color: cyan;
+                background: #00000040;
+                }
+                * {
+                  cursor: url(/cursors/cyan/standart.cur), crosshair !important;
+                }
+                a, a * {
+                  cursor: url(/cursors/cyan/pointer.cur), pointer !important;
+                color: cyan !important;
+                font-size: 17px;
+                }
+                footer, .section-padding, footer *, .section-padding *, #counter, #counter * {
+                  cursor: url(/cursors/cyan/standart.cur), crosshair !important;
+                color: cyan !important;
+                }
+                #counter h3, #counter small {
+                  cursor: url(/cursors/cyan/select.cur), pointer !important;
+                color: cyan !important;
+                }
+                #counter *::-moz-selection, #counter *::-moz-selection {
+                color: cyan !important;
+                background: #00000040 !important;
+                }
+                #counter *::selection, #counter *::selection {
+                color: cyan !important;
+                background: #00000040 !important;
+                }
+                footer *::-moz-selection, .section-padding *::-moz-selection {
+                color: cyan !important;
+                background: #00000040 !important;
+                }
+                footer *::selection, .section-padding *::selection {
+                color: cyan !important;
+                background: #00000040 !important;
+                }
+                .section-padding h4, .section-padding p, .section-padding h2, footer p {
+                  cursor: url(/cursors/cyan/select.cur), pointer !important;
+                color: cyan !important;
+                }
+                select {
+                  cursor: url(/cursors/cyan/pointer.cur), pointer !important;
+                color: cyan !important;
+                }
+                textarea {
+                  cursor: url(/cursors/cyan/select.cur), pointer !important;
+                color: cyan !important;
+                }
+                img, img *, i, i * {
+                  -webkit-touch-callout: none;
+                    -webkit-user-select: none;
+                     -khtml-user-select: none;
+                       -moz-user-select: none;
+                        -ms-user-select: none;
+                            user-select: none;
+                }
+              </style>
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper" style="margin-left: 0px !important;">
+
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1> <%= language.get("SERVER_CONF") %> <small> Version 1.0.0-beta </small> </h1>
+					<ol class="breadcrumb">
+                        <li><a href="/selector"><i class="fa fa-home"></i> <%= language.get("SELECTOR") %></a></li>
+                        <li class="active"><%= guild.name %></li>
+					</ol>
+				</section>
+
+				<section class="content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="box box-widget widget-user">
+                                <div class="widget-user-header bg-aqua-active">
+                                    <h3 class="widget-user-username"><%= guild.name %></h3>
+                                </div>
+                                <div class="widget-user-image">
+                                    <img class="img-circle" src="<%= guild.iconURL %>" alt="Server icon">
+                                </div>
+                                <div class="box-footer">
+                                    <div class="row">
+                                        <div class="col-sm-12 border-right">
+                                            <div class="description-block">
+                                                <h5 class="description-header"><%= guild.memberCount %></h5>
+                                                <span class="description-text"><%= language.get("UTILS").MEMBERS %></span>
+                                            </div>
+                                            <!-- /.description-block -->
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+                                    <!-- /.row -->
+                                </div>
+                                <!-- /.box-footer -->
+                            </div>
+                            <!-- BASIC CONFIGURATION -->
+                            <div class="box box-warning">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").BASIC %></h3>
+                                </div>
+                                <form role="form" action="/manage/<%= guild.id %>/" method="POST">
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label><%= language.get("CONFIG_FIELDS").PREFIX %></label>
+                                            <input type="text" name="prefix" class="form-control" style="margin-bottom: 5px; color: #ff0; background: rgb(0, 0, 0);" placeholder="<%= guild.prefix %>">
+                                        </div>
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <label><%= language.get("CONFIG_FIELDS").LANG %></label>
+                                            <select class="form-control" name="language" style="margin-bottom: 5px; color: #ff0; background: rgb(0, 0, 0);">
+                                                <% if(guild.language === "french"){ %>
+                                                    <option selected="selected"><%= language.get("UTILS").FRENCH %></option>
+                                                    <option><%= language.get("UTILS").ENGLISH %></options>
+                                                <% } else { %>
+                                                <option><%= language.get("UTILS").FRENCH %></option>
+                                                <option selected="selected"><%= language.get("UTILS").ENGLISH %></options>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary"><%= language.get("UTILS").UPDATE %></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box -->
+                            <!-- SPECIAL CHANNELS -->
+                            <div class="box box-warning">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").CHANNELS %></h3>
+                                </div>
+                                <form role="form" action="/manage/<%= guild.id %>/" method="POST">
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <label><%= language.get("CONFIG_FIELDS").SUGGESTIONS %></label>
+                                            <select class="form-control" name="suggestions" style="margin-bottom: 5px; color: #ff0; background: rgb(0, 0, 0);">
+                                                <% if(guild.plugins.suggestions && bot.channels.get(guild.plugins.suggestions)){ %>
+                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.suggestions).name %></option>
+                                                    <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.suggestions).forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); %>
+                                                        <option><%= language.get("UTILS").NO_CHANNEL %></option>
+                                                <% } else { %>
+                                                    <option selected="selected"><%= language.get("UTILS").NO_CHANNEL %></option>
+                                                    <% guild.channels.filter((ch) => ch.type === "text").forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><%= language.get("CONFIG_FIELDS").MODLOGS %></label>
+                                            <select class="form-control" name="modlogs" style="margin-bottom: 5px; color: #ff0; background: rgb(0, 0, 0);">
+                                                <% if(guild.plugins.modlogs && bot.channels.get(guild.plugins.modlogs)){ %>
+                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.modlogs).name %></option>
+                                                    <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.modlogs).forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); %>
+                                                        <option><%= language.get("UTILS").NO_CHANNEL %></option>
+                                                <% } else { %>
+                                                    <option selected="selected"><%= language.get("UTILS").NO_CHANNEL %></option>
+                                                    <% guild.channels.filter((ch) => ch.type === "text").forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><%= language.get("CONFIG_FIELDS").FORTNITESHOP %></label>
+                                            <select class="form-control" name="fortniteshop" style="margin-bottom: 5px; color: #ff0; background: rgb(0, 0, 0);">
+                                                <% if(guild.plugins.fortniteshop && bot.channels.get(guild.plugins.fortniteshop)){ %>
+                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.fortniteshop).name %></option>
+                                                    <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.fortniteshop).forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); %>
+                                                        <option><%= language.get("UTILS").NO_CHANNEL %></option>
+                                                <% } else { %>
+                                                    <option selected="selected"><%= language.get("UTILS").NO_CHANNEL %></option>
+                                                    <% guild.channels.filter((ch) => ch.type === "text").forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary"><%= language.get("UTILS").UPDATE %></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <div class="col-md-6">
+                            <!-- WELCOME CONFIGURATION -->
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").WELCOME %></h3>
+                                </div>
+                                <form role="form" action="/manage/<%= guild.id %>/" method="POST">
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label><%= language.get("CONFIG_FIELDS").MESSAGE %></label>
+                                            <textarea rows="3" name="message" class="form-control" style="margin-bottom: 5px; color: #ff0; background: rgb(0, 0, 0);" required><%= (guild.plugins.welcome.message || language.get('WELCOME_DEFAULT_MESSAGE')) %></textarea>
+                                        </div>
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <label><%= language.get("CONFIG_FIELDS").CHANNEL %></label>
+                                            <select class="form-control" name="channel" style="margin-bottom: 5px; color: #ff0; background: rgb(0, 0, 0);">
+                                                <% if(guild.plugins.welcome.enabled){ %>
+                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.welcome.channel).name %></option>
+                                                    <% guild.channels.filter((ch) => ch.id !== guild.plugins.welcome.channel && ch.type === "text").forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); } else { %>
+                                                    <option selected="selected">#<%= guild.channels.filter((ch) => ch.type === "text").first().name %></option>
+                                                    <% guild.channels.filter((ch) => ch.id !== guild.channels.first().id && ch.type === "text").forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <% if(guild.plugins.welcome.withImage || !guild.plugins.welcome.enabled) { %>
+                                                        <input type="checkbox" name="withImage" checked><p><%= language.get("CONFIG_FIELDS").WITHIMAGE_WELCOME %></p>
+                                                    <% } else { %>
+                                                        <input type="checkbox" name="withImage"><p><%= language.get("CONFIG_FIELDS").WITHIMAGE_WELCOME %></p>
+                                                    <% } %>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <% if(guild.plugins.welcome.enabled){ %>
+                                            <button type="submit" name="welcomeDisable"  class="btn btn-danger"><%= language.get("DISABLE_MESSAGES") %></button>
+                                            <button type="submit" name="welcomeUpdate" class="btn btn-primary pull-right"><%= language.get("UTILS").UPDATE %></button>
+                                        <% } else { %>
+                                            <button type="submit" name="welcomeEnable" class="btn btn-success"><%= language.get("ENABLE_MESSAGES") %></button>
+                                        <% } %>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- GOODBYE CONFIGURATION -->
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").GOODBYE %></h3>
+                                </div>
+                                <form role="form" action="/manage/<%= guild.id %>/" method="POST">
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label><%= language.get("CONFIG_FIELDS").MESSAGE %></label>
+                                            <textarea rows="3" name="message" class="form-control" style="margin-bottom: 5px; color: #ff0; background: rgb(0, 0, 0);" required><%= (guild.plugins.goodbye.message || language.get('GOODBYE_DEFAULT_MESSAGE')) %></textarea>
+                                        </div>
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <label><%= language.get("CONFIG_FIELDS").CHANNEL %></label>
+                                            <select class="form-control" name="channel" style="margin-bottom: 5px; color: #ff0; background: rgb(0, 0, 0);">
+                                                <% if(guild.plugins.goodbye.enabled){ %>
+                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.goodbye.channel).name %></option>
+                                                    <% guild.channels.filter((ch) => ch.id !== guild.plugins.goodbye.channel && ch.type === "text").forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); } else { %>
+                                                    <option selected="selected">#<%= guild.channels.filter((ch) => ch.type === "text").first().name %></option>
+                                                    <% guild.channels.filter((ch) => ch.id !== guild.channels.first().id && ch.type === "text").forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <% if(guild.plugins.goodbye.withImage || !guild.plugins.goodbye.enabled) { %>
+                                                        <input type="checkbox" name="withImage" checked><p><%= language.get("CONFIG_FIELDS").WITHIMAGE_GOODBYE %></p>
+                                                    <% } else { %>
+                                                        <input type="checkbox" name="withImage"><p><%= language.get("CONFIG_FIELDS").WITHIMAGE_GOODBYE %></p>
+                                                    <% } %>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <% if(guild.plugins.goodbye.enabled){ %>
+                                            <button type="submit" name="goodbyeDisable" class="btn btn-danger"><%= language.get("DISABLE_MESSAGES") %></button>
+                                            <button type="submit" name="goodbyeUpdate" class="btn btn-primary pull-right"><%= language.get("UTILS").UPDATE %></button>
+                                        <% } else { %>
+                                            <button type="submit" name="goodbyeEnable" class="btn btn-success"><%= language.get("ENABLE_MESSAGES") %></button>
+                                        <% } %>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- AUTOROLE CONFIGURATION -->
+                            <div class="box box-warning">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").AUTOROLE %></h3>
+                                </div>
+                                <form role="form" action="/manage/<%= guild.id %>/" method="POST">
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <label><%= language.get("CONFIG_FIELDS").ROLE %></label>
+                                            <select class="form-control" name="role" style="margin-bottom: 5px; color: #ff0; background: rgb(0, 0, 0);">
+                                                <% if(guild.plugins.autorole.enabled){ %>
+                                                    <option selected="selected">@<%= guild.roles.get(guild.plugins.autorole.role).name %></option>
+                                                    <% guild.roles.filter((r) => r.id !== guild.plugins.autorole.role && r.name !== "@everyone").forEach((r) => { %>
+                                                        <option>@<%= r.name %></option>
+                                                    <% }); } else { %>
+                                                    <option selected="selected">@<%= guild.roles.filter((r) => r.name !== "@everyone").first().name %></option>
+                                                    <% guild.roles.filter((r) => r.id !== guild.roles.filter((r) => r.name !== "@everyone").first().id && r.name !== "@everyone").forEach((r) => { %>
+                                                        <option>@<%= r.name %></option>
+                                                    <% }); %>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <% if(guild.plugins.autorole.enabled){ %>
+                                            <button type="submit" name="autoroleDisable" class="btn btn-danger"><%= language.get("DISABLE_AUTOROLE") %></button>
+                                            <button type="submit" name="autoroleUpdate" class="btn btn-primary pull-right"><%= language.get("UTILS").UPDATE %></button>
+                                        <% } else { %>
+                                            <button type="submit" name="autoroleEnable" class="btn btn-success"><%= language.get("ENABLE_AUTOROLE") %></button>
+                                        <% } %>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                    <div>
+				</section>
+				
+				<!-- Footer includes credits and version -->
+			</div>
+            <!-- /.content-wrapper -->
+            <%- include('../invite/discord') %>
+            <%- include('../includes/footer') %>
+            <script src="/js/anti.js"></script>
+		</div>
+		<!-- ./wrapper -->
+    </body>
+    
+</html>

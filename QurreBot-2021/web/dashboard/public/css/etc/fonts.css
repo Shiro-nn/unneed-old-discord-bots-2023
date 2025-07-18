@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'NeonDL';
+    src: url('https://cdn.scpsl.store/scpsl.store/fonts/my/NeonDL.eot');
+    src: url('https://cdn.fydne.xyz/scpsl.store/fonts/my/NeonDL.eot?#iefix') format('embedded-opentype'),
+         url('https://cdn.fydne.xyz/scpsl.store/fonts/my/NeonDL.woff') format('woff'),
+         url('https://cdn.fydne.xyz/scpsl.store/fonts/my/NeonDL.ttf') format('truetype'),
+         url('https://cdn.fydne.xyz/scpsl.store/fonts/my/NeonDL.svg#NeonDL') format('svg');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+@font-face {
+    font-family: 'NeonOL';
+    src: url('https://cdn.fydne.xyz/scpsl.store/fonts/my/NeonOL.eot');
+    src: url('https://cdn.fydne.xyz/scpsl.store/fonts/my/NeonOL.eot?#iefix') format('embedded-opentype'),
+         url('https://cdn.fydne.xyz/scpsl.store/fonts/my/NeonOL.woff') format('woff'),
+         url('https://cdn.fydne.xyz/scpsl.store/fonts/my/NeonOL.ttf') format('truetype'),
+         url('https://cdn.fydne.xyz/scpsl.store/fonts/my/NeonOL.svg#NeonOL') format('svg');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+@font-face {
+    font-family: 'Nickainley';
+    src: url('https://cdn.fydne.xyz/scpsl.store/fonts/my/Nickainley.eot');
+    src: url('https://cdn.fydne.xyz/scpsl.store/fonts/my/Nickainley.eot?#iefix') format('embedded-opentype'),
+         url('https://cdn.fydne.xyz/scpsl.store/fonts/my/Nickainley.woff') format('woff'),
+         url('https://cdn.fydne.xyz/scpsl.store/fonts/my/Nickainley.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}

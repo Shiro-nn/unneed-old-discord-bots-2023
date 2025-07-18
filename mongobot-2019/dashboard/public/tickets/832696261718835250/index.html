@@ -1,0 +1,2691 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>fydne - вопросы-113</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
+.spoiler {
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image * {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 100%;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__reference-symbol {
+    grid-column: 1;
+    border-style: solid;
+    border-width: 2px 0 0 2px;
+    border-radius: 8px 0 0 0;
+    margin-left: 16px;
+    margin-top: 8px;
+}
+
+.chatlog__reference {
+    display: flex;
+    grid-column: 2;
+    margin-left: 1.2em;
+    margin-bottom: 0.25em;
+    font-size: 0.875em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+}
+
+.chatlog__reference-avatar {
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    margin-right: 0.25em;
+}
+
+.chatlog__reference-name {
+    margin-right: 0.25em;
+    font-weight: 600;
+}
+
+.chatlog__reference-link {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatlog__reference-link:hover {
+    text-decoration: none;
+}
+
+.chatlog__reference-content > * {
+    display: inline;
+}
+
+.chatlog__reference-edited-timestamp {
+    margin-left: 0.25em;
+    font-size: 0.8em;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__attachment-container {
+    height: 40px;
+    width: 100%;
+    max-width: 520px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.chatlog__attachment-icon {
+    float: left;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.chatlog__attachment-icon > .a {
+    fill: #f4f5fb;
+    d: path("M50,935a25,25,0,0,1-25-25V50A25,25,0,0,1,50,25H519.6L695,201.32V910a25,25,0,0,1-25,25Z");
+}
+
+.chatlog__attachment-icon > .b {
+    fill: #7789c4;
+    d: path("M509.21,50,670,211.63V910H50V50H509.21M530,0H50A50,50,0,0,0,0,50V910a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50h0V191Z");
+}
+
+.chatlog__attachment-icon > .c {
+    fill: #f4f5fb;
+    d: path("M530,215a25,25,0,0,1-25-25V50a25,25,0,0,1,16.23-23.41L693.41,198.77A25,25,0,0,1,670,215Z");
+}
+
+.chatlog__attachment-icon > .d {
+    fill: #7789c4;
+    d: path("M530,70.71,649.29,190H530V70.71M530,0a50,50,0,0,0-50,50V190a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50Z");
+}
+
+.chatlog__attachment-filesize {
+    color: #72767d;
+    font-size: 12px;
+}
+
+.chatlog__attachment-filename {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__reference-symbol {
+    border-color: #4f545c;
+}
+
+.chatlog__reference {
+    color: #b5b6b8;
+}
+
+.chatlog__reference-link {
+    color: #b5b6b8;
+}
+
+.chatlog__reference-link:hover {
+    color: #ffffff;
+}
+
+.chatlog__reference-edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__attachment-container {
+    background-color: #2f3136;
+    border-color: #292b2f;
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/616697847261298688/a_460227297f7b0d3ab50ada8b5d09a964.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">fydne</div>
+        <div class="preamble__entry">вопросы / вопросы-113</div>
+
+            <div class="preamble__entry preamble__entry--small">&lt;@781133591156359168&gt; | вопросы</div>
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/626106847451152399/33e43290b5c070d267d8b66cb95e1da2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#0773" data-user-id="626106847451152399" style="color: rgb(0,255,255)">fydne</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">16-Apr-21 10:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="832696265044525097" id="message-832696265044525097">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="">@Администрация</span>, пользователь создал новый тикет.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832696267234213908" id="message-832696267234213908">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><u><strong>Вот твой канал, <span class="mention" title="министр обороны#8841">@министр обороны</span></strong></u></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="832696268387123233" id="message-832696268387123233">
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(47,49,54,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">Напишите ваш вопрос максимально подробно</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+            <div class="chatlog__message chatlog__message--pinned" data-message-id="832696273365762069" id="message-832696273365762069">
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(47,49,54,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">Для закрытия тикета, нажмите на <img class="emoji " alt="🔒" title="🔒" src="https://twemoji.maxcdn.com/2/72x72/1f512.png">
+<strong>Закрыть может только администратор</strong></div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="lock" title="lock" src="https://cdn.discordapp.com/emojis/722545677908836372.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="832696334574288946" id="message-832696334574288946">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а у меня вопрос</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/496227697211473920/f3c60f0c2159bed4cca16cacc8708756.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="мазмак#9384" data-user-id="496227697211473920" style="color: rgb(255,118,0)">мазмак</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="832696403745832960" id="message-832696403745832960">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Добрый день</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:18 PM</span>
+
+            <div class="chatlog__message " data-message-id="832696414370660433" id="message-832696414370660433">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а в четь чего пользователя МИНИСТОР YOUTUBTRS разместили на сайт в донат?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832696464572416032" id="message-832696464572416032">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">это мой друг если что</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832696646746898432" id="message-832696646746898432">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">у него дискорд СКАЖИ ДА КОТУ!#9583</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/496227697211473920/f3c60f0c2159bed4cca16cacc8708756.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="мазмак#9384" data-user-id="496227697211473920" style="color: rgb(255,118,0)">мазмак</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="832696680053735494" id="message-832696680053735494">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я сейчас спросу и выше меня админа он ответит</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:19 PM</span>
+
+            <div class="chatlog__message " data-message-id="832696726531997757" id="message-832696726531997757">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">мне просто интересно</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/496227697211473920/f3c60f0c2159bed4cca16cacc8708756.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="мазмак#9384" data-user-id="496227697211473920" style="color: rgb(255,118,0)">мазмак</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="832696908232392754" id="message-832696908232392754">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я плохо понимаю про донат</span>
+
+                                <span class="chatlog__edited-timestamp" title="16-Apr-21 10:20 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/626106847451152399/33e43290b5c070d267d8b66cb95e1da2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#0773" data-user-id="626106847451152399" style="color: rgb(0,255,255)">fydne</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">16-Apr-21 10:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="832696950822010942" id="message-832696950822010942">
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(47,49,54,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+                                        <div class="chatlog__embed-title">
+                                                <div class="markdown preserve-whitespace">мазмак</div>
+                                        </div>
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">Вы получили <strong>13</strong> уровень.</div>
+                                        </div>
+
+                                </div>
+
+                                    <div class="chatlog__embed-thumbnail-container">
+                                        <a class="chatlog__embed-thumbnail-link" href="https://cdn.discordapp.com/avatars/496227697211473920/f3c60f0c2159bed4cca16cacc8708756.png?size=2048">
+                                            <img class="chatlog__embed-thumbnail" src="https://cdn.discordapp.com/avatars/496227697211473920/f3c60f0c2159bed4cca16cacc8708756.png?size=2048" alt="Thumbnail">
+                                        </a>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="832696975131803718" id="message-832696975131803718">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">просто я думал это у него одного</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832697099437998080" id="message-832697099437998080">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ну во вкладке донат есть ник [ГЕН-ШТАБ]MUNUSTOR</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="832697102106755082" id="message-832697102106755082">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">доброго времени суток, <span class="mention" title="министр обороны#8841">@министр обороны</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832697154451537920" id="message-832697154451537920">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">в тот список попадают топ-донатеры</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="832697178963050537" id="message-832697178963050537">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ОГО</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832697200944480267" id="message-832697200944480267">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">О_О</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="832697205085306921" id="message-832697205085306921">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">у которых действует донат</span>
+
+                                <span class="chatlog__edited-timestamp" title="16-Apr-21 10:21 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="832697326476066896" id="message-832697326476066896">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">тоесть в списке топ-донатеры?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="832697406440341554" id="message-832697406440341554">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">да, но только в том случае, если у них активный донат</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832697461541830666" id="message-832697461541830666">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">тобиш, еще не закончился/куплен новый</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="832697506713829407" id="message-832697506713829407">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">аааа</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832697544500183042" id="message-832697544500183042">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я просто думал а как он так прославился</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832697569061765171" id="message-832697569061765171">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">что в такой список попал</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:22 PM</span>
+
+            <div class="chatlog__message " data-message-id="832697603710779422" id="message-832697603710779422">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img class="emoji emoji--large" alt="ShiroThumb" title="ShiroThumb" src="https://cdn.discordapp.com/emojis/782318782597038091.gif"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="832697664155811891" id="message-832697664155811891">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ещё такой вопрос</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832697738256711692" id="message-832697738256711692">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а на нр можно с помощью крюк-кошки в башни залезать?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832697775426502656" id="message-832697775426502656">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">или форснут нафиг?</span>
+
+                                <span class="chatlog__edited-timestamp" title="16-Apr-21 10:23 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+                <span class="chatlog__reference-name" title="министр обороны#8841" style="color: rgb(152,157,255)">министр обороны</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;832697738256711692&#39;)">
+                    <span class="chatlog__reference-content">
+а на нр можно с помощью крюк-кошки в башни залезать?                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:23 PM</span>
+
+            <div class="chatlog__message " data-message-id="832697806925201449" id="message-832697806925201449">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">там текстуры, вроде</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="832697886751588422" id="message-832697886751588422">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ну крюк кошка как я видел это что типа ноуклипа</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832697916619489331" id="message-832697916619489331">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">но временного</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+                <span class="chatlog__reference-name" title="министр обороны#8841" style="color: rgb(152,157,255)">министр обороны</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;832697886751588422&#39;)">
+                    <span class="chatlog__reference-content">
+ну крюк кошка как я видел это что типа ноуклипа                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="832697969273864243" id="message-832697969273864243">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">не совсем</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832698049335656498" id="message-832698049335656498">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">он цепляет к объектам, а не свободно перемещает</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:24 PM</span>
+
+            <div class="chatlog__message " data-message-id="832698057896230982" id="message-832698057896230982">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ну я когда против хауса с крюк-кошкой сражался он ко мне залетел в лифт</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="832698151928463500" id="message-832698151928463500">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ну, он успел активировать крюк-кошку</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="832698168184537098" id="message-832698168184537098">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а я в это время хилился</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832698226892079144" id="message-832698226892079144">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ctrl+V</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832698258886885417" id="message-832698258886885417">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">и да ещё вопросик</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="832698276041064559" id="message-832698276041064559">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><img class="emoji emoji--large" alt="what" title="what" src="https://cdn.discordapp.com/emojis/781967634975162389.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="832698447059746877" id="message-832698447059746877">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а как пользоваться крюк кошкой, я понял что нужно команду писать в консоль и на t жать а что делать если на эту клавишу у меня админка?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="832698510474215476" id="message-832698510474215476">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">забиндить на другую</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832698545370169405" id="message-832698545370169405">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">cmdbint <span class="pre pre--inline">t</span> .hook run</span>
+
+                                <span class="chatlog__edited-timestamp" title="16-Apr-21 10:26 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="832698574826766336" id="message-832698574826766336">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832698651708358672" id="message-832698651708358672">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">тоесть например не t а Y или f</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832698693098274846" id="message-832698693098274846">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">только в середине написать команды</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="832698727789101127" id="message-832698727789101127">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">да, но некоторые клавиши не работают</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832698806361129020" id="message-832698806361129020">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="pre pre--inline">/</span>, например</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832698813768269875" id="message-832698813768269875">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">вроде</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+                <span class="chatlog__reference-name" title="fydne#1337" style="color: rgb(0,0,1)">noname</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;832698049335656498&#39;)">
+                    <span class="chatlog__reference-content">
+он цепляет к объектам, а не свободно перемещает                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="832698982395543583" id="message-832698982395543583">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а как тогда маска у нас залетела за текстуры и нас дамажила</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832698990221983796" id="message-832698990221983796">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+                <span class="chatlog__reference-name" title="министр обороны#8841" style="color: rgb(152,157,255)">министр обороны</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;832698982395543583&#39;)">
+                    <span class="chatlog__reference-content">
+а как тогда маска у нас залетела за текстуры и нас дамажила                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699043779051540" id="message-832699043779051540">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">это был багоюз</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699066928463933" id="message-832699066928463933">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">уууу</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699067992768533" id="message-832699067992768533">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">односторонние текстуры</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699093192278036" id="message-832699093192278036">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">приехали</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832699136758382642" id="message-832699136758382642">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я его ник сейчас вряд-ли вспомню</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832699151527575592" id="message-832699151527575592">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">это было то</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699161852903434" id="message-832699161852903434">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">т.к разработчикам лень сделать нормальные текстуры</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699164399370270" id="message-832699164399370270">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">давно</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:29 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699320951767110" id="message-832699320951767110">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ну, если найдете нарушителей, то администрация с радостью разберет вашу жалобу)</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832699358499307540" id="message-832699358499307540">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="spoiler spoiler--hidden" onclick="showSpoiler(event, this)"><span class="spoiler-text">т.к им надо собирать актив</span></span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699414653042708" id="message-832699414653042708">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я на нр1 играю постоянно</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832699460361519166" id="message-832699460361519166">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">мне кажеться достаточно скриншота и всё</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+                <span class="chatlog__reference-name" title="министр обороны#8841" style="color: rgb(152,157,255)">министр обороны</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;832699460361519166&#39;)">
+                    <span class="chatlog__reference-content">
+мне кажеться достаточно скриншота и всё                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:30 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699503458648084" id="message-832699503458648084">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">да.</span>
+
+                                <span class="chatlog__edited-timestamp" title="16-Apr-21 10:30 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699637080653894" id="message-832699637080653894">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а на ff:off работает френдли фаер?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+                <span class="chatlog__reference-name" title="министр обороны#8841" style="color: rgb(152,157,255)">министр обороны</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;832699637080653894&#39;)">
+                    <span class="chatlog__reference-content">
+а на ff:off работает френдли фаер?                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699747772268636" id="message-832699747772268636">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">friendly fair: off</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699782501236777" id="message-832699782501236777">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832699840588414986" id="message-832699840588414986">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а то бы на нр творилась анархия</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832699943449133076" id="message-832699943449133076">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">и кст почему то на нр не связываюстся дешки</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="832699972762730546" id="message-832699972762730546">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">разве?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700003813425162" id="message-832700003813425162">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">тоесть связываются и моментально развязывались</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700050739429426" id="message-832700050739429426">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">вы сейчас на сервере?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700056905842781" id="message-832700056905842781">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">когда я в воскресенье прошлое играл</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832700070377685012" id="message-832700070377685012">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">нет</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:32 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700101678858240" id="message-832700101678858240">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">можете зайти?, я проверю</span>
+
+                                <span class="chatlog__edited-timestamp" title="16-Apr-21 10:32 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/444959945478111233/cf9e0c22ec9df149f31a0ddf143666a2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Aleksmite#6796" data-user-id="444959945478111233" style="color: rgb(255,0,222)">Aleksmite</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700128820592691" id="message-832700128820592691">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Добрый день. Подтверждаю.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700144041721958" id="message-832700144041721958">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">что мне их пришлось тупо в расход:/</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/444959945478111233/cf9e0c22ec9df149f31a0ddf143666a2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Aleksmite#6796" data-user-id="444959945478111233" style="color: rgb(255,0,222)">Aleksmite</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700177739546665" id="message-832700177739546665">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Не возможно было связать. Думал баг:(</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700217739444235" id="message-832700217739444235">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а потом в чате орали на меня &quot;почему я дешок убиваю?&quot;</span>
+
+                                <span class="chatlog__edited-timestamp" title="16-Apr-21 10:33 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700307188088852" id="message-832700307188088852">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">будет исправлено, наверное</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:33 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700364046073946" id="message-832700364046073946">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">а то как то обидно мне</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832700390884900914" id="message-832700390884900914">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">что люди тупо умирают</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+        <div class="chatlog__reference-symbol">
+        </div>
+        <div class="chatlog__reference">
+                <img class="chatlog__reference-avatar" src="https://cdn.discordapp.com/avatars/444959945478111233/cf9e0c22ec9df149f31a0ddf143666a2.png" alt="Avatar">
+                <span class="chatlog__reference-name" title="Aleksmite#6796" style="color: rgb(255,0,222)">Aleksmite</span>
+                <a class="chatlog__reference-link" href="#" onclick="scrollToMessage(event, &#39;832700177739546665&#39;)">
+                    <span class="chatlog__reference-content">
+Не возможно было связать. Думал баг:(                    </span>
+
+                </a>
+        </div>
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700520078639135" id="message-832700520078639135">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">тоже самое</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700546636972063" id="message-832700546636972063">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">окей, будет исправлено</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/781133591156359168/7b1863ce39d236fb31a6b2fdfd054054.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="министр обороны#8841" data-user-id="781133591156359168" style="color: rgb(152,157,255)">министр обороны</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:34 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700594668961812" id="message-832700594668961812">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">надеемся</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832700815810101308" id="message-832700815810101308">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">думаю можно закрывать тикет</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="832700862190190634" id="message-832700862190190634">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">я всё что спросить спросил</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/784745992444444723/a_661176359652b29581803bf022622531.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#1337" data-user-id="784745992444444723" style="color: rgb(0,0,1)">noname</span>
+
+
+        <span class="chatlog__timestamp">16-Apr-21 10:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700989202366534" id="message-832700989202366534">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">оке</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/626106847451152399/33e43290b5c070d267d8b66cb95e1da2.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="fydne#0773" data-user-id="626106847451152399" style="color: rgb(0,255,255)">fydne</span>
+
+            <span class="chatlog__bot-tag">BOT</span>
+
+        <span class="chatlog__timestamp">16-Apr-21 10:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="832700999327416341" id="message-832700999327416341">
+
+
+                    <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(47,49,54,255)"></div>
+
+                        <div class="chatlog__embed-content-container">
+                            <div class="chatlog__embed-content">
+                                <div class="chatlog__embed-text">
+
+
+                                        <div class="chatlog__embed-description">
+                                            <div class="markdown preserve-whitespace">Сохранение логов...</div>
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 90 message(s)</div>
+</div>
+
+</body>
+
+</html>

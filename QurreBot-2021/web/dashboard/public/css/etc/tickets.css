@@ -1,0 +1,134 @@
+.select2-container .select2-selection--single .select2-selection__rendered{
+    white-space:wrap
+}
+.centertxt{
+    width:120px;
+    margin-left:0;
+    margin-right:0;
+    padding-left:0;
+    padding-right:0;
+    text-align:center
+}
+.ShowOnLoad{
+    width:100%;
+    border-width:0;
+    height:0;
+    display:hidden
+}
+divT[class=row]{
+    outline:1px solid #00f
+}
+divT[class^=col-]{
+    background-color:red;
+    outline:2px solid #00f
+}
+.cst_edit{float:right}
+.cst_panel{margin-bottom:3px;padding:.5rem}
+@media only screen and (min-width:600px){
+    .cst_edit_inv{display:none}
+}
+@media only screen and (max-width:600px){
+    .cst_edit_hide{display:none}
+}
+.line-wrapper{
+    display:flex;
+    align-items:center
+}
+.line{
+    border-top:1px solid grey;
+    flex-grow:1;
+    margin:0 10px
+}
+.collapsible{
+    background-color:transparent;
+    cursor:pointer;
+    padding:3px;
+    width:100%;
+    border:none;
+    text-align:left;
+    outline:0;
+    font-size:15px;
+    font-weight:400
+}
+.collapsible:before{
+    padding-top:0;
+    font-weight:700;
+    content:"\f0fe";
+    font-size:20px;
+    float:left;
+    margin-right:10px
+}
+.collapsible.active:before{content:"\f146"}
+.collapsible-content{
+    padding:0 13px;
+    max-height:0;
+    overflow:hidden
+}
+.help-button{color:#6c757d}
+.help-button:hover{color:#71f97c}
+@media screen and (min-width:600px){
+    div.bypass_col{max-width:320px}
+    .flex_Large{display:flex}
+}
+@media screen and (max-width:600px){
+    .max_width_screen{width:100%}
+}
+.logCh{width: 100%;}
+.select-selected:after {
+    top: 17px;
+    right: 125px;
+}
+.select-selected.select-arrow-active:after{
+    top: 10px;
+}
+.dntchng .select-selected:after{
+    right: 25px;
+}
+.close, #ticket_close, #ticket_delete_close, #ticket_rename_close, #ticket_disable_close{
+    cursor: url(/cursors/red/pointer.cur), pointer !important;
+}
+.emoji-mart-emoji, .emoji-mart-emoji *, .emoji-mart-search-icon, .emoji-mart-search-icon *, .emoji-mart-anchors *{
+    cursor: url(/cursors/green/pointer.cur), pointer !important;
+}
+.emoji-mart-search input{
+    cursor: url(/cursors/green/select.cur), auto !important;
+}
+.dontvisible{display: none;}
+.emoji_list{margin: 0 !important;}
+.emoji_render{cursor: url(/cursors/red/unavailable.cur), pointer !important;}
+.ticket_new{display: block; z-index: 1040; padding-right: 17px; background-color: #00000059;}
+.ticket_style_settings{display: block; z-index: 1040; padding-right: 17px; background-color: #00000059;}
+.ticket_style_delete{display: block; z-index: 1040; padding-right: 17px; background-color: #00000059;}
+.ticket_button{width:100%;color:#fff}
+.btn:hover{background-color: #00000000;}
+.ticket_unset{max-height: unset;}
+.ticket_box{padding-top:10px;padding-bottom:10px}
+.getEmojis{
+    display: inline-block;
+    font-weight: 400;
+    color: #adb5bd;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: .9rem;
+    line-height: 1.5;
+    border-radius: .15rem;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(https://cdn.fydne.xyz/bot/ticket.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: url(/cursors/green/pointer.cur), pointer !important;
+}
+#picker{
+    position: absolute;
+    pointer-events: auto;
+    z-index: 9999;
+}
+.ticket_overflow{overflow-y: auto;}

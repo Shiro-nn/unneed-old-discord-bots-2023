@@ -1,0 +1,15 @@
+{
+    "name": "chatgptbot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "start.cjs",
+    "type": "commonjs",
+    "author": "fydne",
+    "license": "ISC",
+    "dependencies": {
+      "chatgpt": "^5.1.2",
+      "discord.js": "^14.8.0",
+      "openai-authenticator": "^0.0.3"
+    }
+  }
+  

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang = ru>
+    <head>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link href="/css/nav.css" rel="stylesheet" type="text/css">
+    <link href="/css/app.min.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>fydne</title>
+    <link rel="icon" type="image/png" href="/anime.png" />
+
+    <!-- CSS JS Fonts Icons-->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="/dist/js/adminlte.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+        <ul class="list-unstyled topnav-menu float-right mb-0">
+            <% if(!is_logged) {%>
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" d="" href="/login" aria-haspopup="false" aria-expanded="false">
+                    <span>Войти</span>
+                </a>
+            </li>
+            <%}else if(is_logged) {%>
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right profile-dropdown" style="color: #00ffff !important;background: #00000000 !important;background-color: #00000000 !important;">
+                    <a href="/selector" class="dropdown-item notify-item" style="color: #00ffff !important;">
+                        <i class="fa fa-user-o" aria-hidden="true"></i>
+                        <span>Гильдии</span>
+                    </a>
+                    <div class="dropdown-divider"></div><a href="/logout" class="dropdown-item notify-item"><i class="fa fa-sign-out" aria-hidden="true"></i><span>Выйти</span></a>
+                </div>
+            </li>
+            <%}%>
+        </ul>
+        <div class="logo-box" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+            <a href="/" class="logo text-center" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+                <span class="logo-lg" style="color: #00000000 !important;background: #00000000 !important;background-color: #00000000 !important;">
+                    <img src="/fydnelogo.png" alt="" width="200px" draggable="false" >
+                </span>
+            </a>
+        </div>
+        <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+            <li></li>
+            <li><a href="https://bot.scpsl.store" class="page-title-main text-dark" style="color: #00ffff !important;background: #00000000 !important;background-color: #00000000 !important;">Другой бот</a></li>
+            <div class="dropdown-divider"></div><a href="/settings" class="dropdown-item notify-item"><i class="fa fa-gear" aria-hidden="true"></i><span>Настройки</span></a>
+            <li><a href="/invite" class="page-title-main text-dark" style="color: #00ffff !important;background: #00000000 !important;background-color: #00000000 !important;">Пригласить бота</a></li>
+        </ul>
+    </div>
+    <br><br><br><br><br>
+    <!-- bootstrap datepicker -->
+  <body class="hold-transition skin-blue sidebar-mini" oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+      
+      <!-- particles.js container -->
+
+			<!-- Content Wrapper. Contains page content -->
+
+				<!-- Content Header (Page header) -->
+				<section class="content-header"  style="background: rgba(0, 0, 0, 0);">
+					<h1> <%= language.get("SELECTOR") %> <small> Version 1.0.0-beta </small> </h1>
+				</section>
+
+				<!-- Main content -->
+                <section class="content" style="background: rgba(0, 0, 0, 0);">
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-8 connectedSortable">
+                            <!-- Custom tabs (Charts with tabs)-->
+                            <div class="nav-tabs-custom">
+                                <!-- Tabs within a box -->
+                                <ul class="nav nav-tabs pull-right">
+                                <li class="active"><a href="#rank-money" data-toggle="tab"> <%= language.get("PROFILE_HEADINGS").MONEY %></a></li>
+                                <li><a href="#rank-level" data-toggle="tab"> <%= language.get("PROFILE_HEADINGS").LEVEL %></a></li>
+                                <li><a href="#rank-rep" data-toggle="tab"> <%= language.get("PROFILE_HEADINGS").REP %></a></li>
+                                <li class="pull-left header"><i class="fa fa-trophy"></i> <%= language.get("UTILS").LEADERBOARD %></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="rank-money" style="position: relative; height: 300px;">
+                                        <div class="chart" style="background: rgba(0, 0, 0, 0);">
+                                            <canvas id="Crank-money"  style="height:230px"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane active" id="rank-level" style="position: relative; height: 300px;">
+                                        <div class="chart">
+                                            <canvas id="Crank-level" style="height:230px"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane active" id="rank-rep" style="position: relative; height: 300px;">
+                                        <div class="chart">
+                                            <canvas id="Crank-rep" style="height:230px"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.nav-tabs-custom -->
+                        </section>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <!-- Widget: user widget style 1 -->
+                            <div class="box box-widget widget-user-2">
+                                <!-- Add the bg color to the header using any of the bg-* classes -->
+                                <div class="widget-user-header bg-yellow">
+                                <div class="widget-user-image">
+                                    <img class="img-circle" src="<%= stats.money[0].displayAvatarURL %>" alt="User Avatar">
+                                </div>
+                                <!-- /.widget-user-image -->
+                                <h3 class="widget-user-username"><a href="/user/<%= stats.money[0].id %>" style="color:white"><%= stats.money[0].username %></a></h3>
+                                <h5 class="widget-user-desc"><%= language.get("FIRST_LEAD_MONEY") %></h5>
+                                </div>
+                            </div>
+                            <!-- /.widget-user -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <!-- Widget: user widget style 1 -->
+                            <div class="box box-widget widget-user-2">
+                                <!-- Add the bg color to the header using any of the bg-* classes -->
+                                <div class="widget-user-header bg-red">
+                                <div class="widget-user-image">
+                                    <img class="img-circle" src="<%= stats.level[0].displayAvatarURL %>" alt="User Avatar">
+                                </div>
+                                <!-- /.widget-user-image -->
+                                <h3 class="widget-user-username"><a href="/user/<%= stats.level[0].id %>" style="color:white"><%= stats.level[0].username %></a></h3>
+                                <h5 class="widget-user-desc"><%= language.get("FIRST_LEAD_LEVEL") %></h5>
+                                </div>
+                            </div>
+                            <!-- /.widget-user -->
+                        </div>
+                        <!-- ./box -->
+                    </div>
+                    <div class="row" style="background: rgba(0, 0, 0, 0);">
+                        <div class="col-md-6">
+                          <!-- AREA CHART -->
+                          <div class="box box-primary">
+                            <div class="box-header with-border">
+                              <h3 class="box-title"><%= language.get("UTILS").COMMANDS %></h3>
+                              <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                              </div>
+                            </div>
+                            <div class="box-body">
+                              <div class="chart">
+                                <canvas id="commands" style="height:250px"></canvas>
+                              </div>
+                            </div>
+                            <!-- /.box-body -->
+                          </div>
+                          <!-- /.box -->
+                        </div>
+                        <div class="col-md-6">
+                            <!-- DONUT CHART -->
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                <h3 class="box-title"><%= language.get("UTILS").COMMANDS_USAGE %> (%)</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
+                                </div>
+                                <div class="box-body">
+                                <canvas id="commandsUsage" style="height:250px"></canvas>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                    </div>
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+		</div></div>
+      
+      <!-- scripts -->
+      
+    <style>
+        .columns .bot-img {
+        box-shadow: 1px 1px 1px 1px transparent !important;
+        animation: pulse 2s infinite;
+        border-radius: 50%;
+        }
+        ::-webkit-scrollbar {
+        width: 9px;
+        }
+        ::-webkit-scrollbar-thumb {
+        background-color: #18191c;
+        border-radius: 99px;
+        }
+        ::-webkit-scrollbar-track {
+        background-color: #00ffff52;
+        }
+        body {
+        background-color: #000000 !important;
+        background-attachment: fixed !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        color: cyan;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        }
+        ::-moz-selection { /* Code for Firefox */
+        color: cyan;
+        background: #00000040;
+        border-radius: 15px;
+        }
+        ::selection {
+        color: cyan;
+        background: #00000040;
+        }
+        .select-channel {
+          background-color: cyan;
+        }
+      * {
+        cursor: url(/cursors/cyan/standart.cur), crosshair !important;
+      }
+      a, a *, i {
+        cursor: url(/cursors/cyan/pointer.cur), pointer !important;
+      }
+      footer, .section-padding, footer *, .section-padding *, #counter, #counter * {
+        cursor: url(/cursors/cyan/standart.cur), crosshair !important;
+      }
+      #counter h3, #counter small {
+        cursor: url(/cursors/cyan/select.cur), pointer !important;
+      }
+        </style>
+    
+		
+        <!-- ./wrapper -->
+        <!-- bootstrap datepicker -->
+        <script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <!-- ChartJS -->
+        <script src="/bower_components/chart.js/Chart.js"></script>
+        <script>
+            $(function(){
+                $("#datepicker").datepicker({
+                    autoclose: true
+                });
+                
+                /* LEADERBOARD */
+                let values = [ "money", "level" ];
+                values.forEach((value) => {
+                    let members = JSON.parse(`<%- JSON.stringify(stats) %>`)[value];
+                    let data={labels:members.map(a=>a.username),datasets:[{label:"Leaderboard "+value,fillColor:"#00a65a",strokeColor:"#00a65a",pointColor:"#00a65a",pointStrokeColor:"rgba(60,141,188,1)",pointHighlightFill:"#fff",pointHighlightStroke:"rgba(60,141,188,1)",data:members.map(a=>a[value])}]},
+                    leaderboardCanvas = $("#Crank-"+value).get(0).getContext("2d"),
+                    leaderboard = new Chart(leaderboardCanvas),
+                    leaderboardData = data,
+                    leaderboardOptions={scaleBeginAtZero:!0,scaleShowGridLines:!0,scaleGridLineColor:"rgba(0,0,0,.05)",scaleGridLineWidth:1,scaleShowHorizontalLines:!0,scaleShowVerticalLines:!0,barShowStroke:!0,barStrokeWidth:2,barValueSpacing:5,barDatasetSpacing:1,responsive:!0,maintainAspectRatio:!0};
+                    leaderboardOptions.datasetFill = false
+                    leaderboard.Bar(leaderboardData, leaderboardOptions);
+                });
+
+                /* STATS */
+                /* commands */
+
+                $(`.tab-content > div[class="tab-pane active"]`).slice(1, 23).removeClass("active");
+            });
+        </script>
+        <%- include('../invite/discord') %>
+        <script src="/js/anti.js"></script>
+	</body>
+</html>

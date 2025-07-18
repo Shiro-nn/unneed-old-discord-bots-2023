@@ -1,0 +1,61 @@
+*{
+    background-color: black !important;
+    background: black !important;
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=88012), pointer !important;
+    color: cyan !important;
+}
+#topLine, #topLine *{
+    background-color: black !important;
+    background: black !important;
+}
+a, p, h1, h2, h3, h4{
+    color: cyan !important;
+}
+a{
+    color: cyan !important;
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=88037), pointer !important;
+}
+span{
+    color: cyan !important;
+    background-color: black !important;
+    background: black !important;
+}
+#tegSpan{
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=88098), pointer !important;
+}
+#ratingMinus, #ratingMinus *, #report, #report *{
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=88032), pointer !important;
+}
+#ratingPlus, #ratingPlus *, .botUpBtn, .botUpBtn *, .botPageInvite, .botPageInvite *, .botLink, .botLink *{
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=88038), pointer !important;
+}
+footer{
+    background-color: black !important;
+    background: black !important;
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=88012), pointer !important;
+    color: cyan !important;
+}
+#ratingDegree{
+    color: cyan !important;
+    background-color: cyan !important;
+    background: cyan !important;
+}
+::-moz-selection { 
+color: cyan;
+background: #00000040;
+border-radius: 15px;
+}
+::selection {
+color: cyan;
+background: #00000040;
+}
+::-webkit-scrollbar {
+width: 9px;
+}
+::-webkit-scrollbar-thumb {
+background-color: #18191c;
+border-radius: 99px;
+}
+::-webkit-scrollbar-track {
+background-color: #00ffff52;
+}

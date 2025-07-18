@@ -1,0 +1,14 @@
+{
+  "name": "chatgptbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "start.js",
+  "type": "module",
+  "author": "fydne",
+  "license": "ISC",
+  "dependencies": {
+    "chatgpt": "^5.2.5",
+    "discord.js": "^14.8.0",
+    "openai-authenticator": "^0.0.3"
+  }
+}

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <ApplicationIcon>..\favicon.ico</ApplicationIcon>
+    <TargetFramework>net6.0</TargetFramework>
+    <Company>fydne</Company>
+    <Copyright>Copyright (c) nn</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CliFx" Version="2.3.0" />
+    <PackageReference Include="Spectre.Console" Version="0.44.0" />
+    <PackageReference Include="Gress" Version="2.0.1" />
+    <PackageReference Include="DotnetRuntimeBootstrapper" Version="2.3.1" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DiscordChatExporter.Core\DiscordChatExporter.Core.csproj" />
+  </ItemGroup>
+
+</Project>

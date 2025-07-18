@@ -1,0 +1,108 @@
+html{
+    background-color: #0D1117;
+}
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+::-webkit-scrollbar{
+width: 9px;
+}
+::-webkit-scrollbar-thumb{
+background-color: rgb(0, 155, 0);
+border-radius: 99px;
+}
+::-webkit-scrollbar-track{
+background-color: #18191c;
+}
+::-moz-selection{ 
+color: rgb(0, 155, 0);
+background: #00000040;
+border-radius: 15px;
+}
+::selection{
+color: rgb(0, 155, 0);
+background: #00000040;
+}
+.container{
+    max-width: 1200px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.heading{
+    color: lime;
+    font-family: NeonOL;
+}
+.desc{
+    margin-top: 25px;
+    color: #80b18a;
+    font-weight: 600;
+}
+.img-fluid{
+    margin: 0px auto;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+img{
+    vertical-align: middle;
+    border-style: none;
+}
+@media(min-width:768px){
+    .mod{
+        max-height: 450px;
+        flex: 0 0 50%;
+        max-width: 100%;
+    }
+    .img-fluid{max-width: 100%;}
+    .i1{max-width: 575px; margin-top: 40px;}
+    .i2{max-width: 575px; margin-left: 0px;}
+    .desc{margin-left: unset;margin-right: unset;text-align: unset;}
+    .heading{text-align: unset;}
+    .one{order: 0;}
+    .two{order: 1;}
+    .three{order: 2;}
+    .four{order: 3;}
+    .five{order: 4;}
+    .six{order: 5;}
+    .seven{order: 6;}
+    .eight{order: 7;}
+}
+@media(max-width:768px){
+    .row, .row *{
+        align-items: center;
+    }
+    .mod{flex:unset;}
+    .img-fluid{max-width: 103vw; margin: 0px;}
+    .desc{margin-left: 10px;margin-right: 10px;text-align: center;}
+    .heading{text-align: center;}
+    .one{order: unset;}
+    .two{order: unset;}
+    .three{order: unset;}
+    .four{order: unset;}
+    .five{order: unset;}
+    .six{order: unset;}
+    .seven{order: unset;}
+    .eight{order: unset;}
+    .fs120{font-size: 120%;}
+    .fs100{font-size: 100%;}
+}
+br{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

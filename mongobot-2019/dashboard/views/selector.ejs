@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Бот с удобными тикетами, хента.. и т.п">
+    <meta name="author" content="fydne">
+    <title>fydne</title>
+    <style>
+    ::-webkit-scrollbar {
+    width: 0px;
+    }
+    ::-webkit-scrollbar-thumb {
+    background-color: #00000000;
+    border-radius: 99px;
+    }
+    ::-webkit-scrollbar-track {
+    background-color: #00000000;
+    }
+    body {
+      overflow: hidden;
+    }
+    </style>
+    <link rel="icon" type="image/ico" href="/fydne.png" />
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    </head>
+    <body oncopy="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" oncut="wpccAlert('wpcc-fail','Copying is disabled.'); return false;" ondragstart="return false;" ondrop="return false;" oncontextmenu="return false;">
+        <style class="INLINE_PEN_STYLESHEET_ID">
+            @import url(https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100);
+        * {
+          box-sizing: border-box;
+          margin: 0;
+        }
+        
+        h1, p, h2, h3, h4, ul, li, div {
+          margin: 0;
+          padding: 0;
+        }
+        
+        .loading-page {
+          background: #0d0d0d;
+          width: 100vw;
+          height: 100vh;
+          display: -webkit-box;
+          display: flex;
+          -webkit-box-pack: center;
+                  justify-content: center;
+          -webkit-box-align: center;
+                  align-items: center;
+        }
+        .loading-page .counter {
+          text-align: center;
+        }
+        .loading-page .counter p {
+          font-size: 40px;
+          font-weight: 100;
+          color: #f60d54;
+        }
+        .loading-page .counter h1 {
+          color: white;
+          font-size: 60px;
+          margin-top: -10px;
+        }
+        .loading-page .counter hr {
+          background: cyan;
+          border: none;
+          height: 1px;
+        }
+        .loading-page .counter {
+          position: relative;
+          width: 200px;
+        }
+        .loading-page .counter h1.abs {
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
+        .loading-page .counter .color {
+          width: 0px;
+          overflow: hidden;
+          color: #f60d54;
+        }
+        .fa-bars{
+          display: none;
+        }
+        </style>
+    <script id="INLINE_PEN_JS_ID">
+        $(document).ready(function () {
+      var counter = 0;
+      var c = 0;
+      var i = setInterval(function () {
+        $(".loading-page .counter h1").html(c + "%");
+        $(".loading-page .counter hr").css("width", c + "%");
+        counter++;
+        c++;
+        if (counter == 30) {
+            $("head").append("<style>::-webkit-scrollbar {width: 9px;}::-webkit-scrollbar-thumb {background-color: #18191c94;border-radius: 99px;}::-webkit-scrollbar-track {background-color: #00000000;}</style>")
+            $("head").append('<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">')
+            $("head").append('<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">')
+            $("head").append('<link href="/css/icons.min.css" rel="stylesheet" type="text/css">')
+            $("head").append('<link href="/css/app.min.css" rel="stylesheet" type="text/css">')
+            $("head").append('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">')
+        }
+        if (counter == 101) {
+          clearInterval(i);
+              $('.loading-page').fadeOut(150);
+              $('#wrapper').fadeIn(150);
+              $("head").append('<style>body {overflow: auto;}</style>')
+        }
+      }, 1);
+    });
+</script>
+        <div class="loading-page">
+            <div class="counter">
+                <hr style="width: 0%;">
+                <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+            </div>
+        </div>
+        <div id="wrapper" style="display: none;">
+            <style>.goog-te-banner-frame{height:27px!important;bottom:0!important;top:auto!important}#goog-gt-tt{display:none!important}body{top:auto!important}@media (max-width:768px){.button-menu-mobile.disable-btn{display:inline!important}.page-title-main{display:none}.menu_small_block{display:block!important}.menu_small_menu{font-size:24px;color:#fff;padding-top:0!important}}</style>
+            <%- include('header/menu') %>
+            <style>@media screen and (min-width:990px){div.bypass_col{max-width:260px;min-width:260px}}</style>
+            <style>
+                * {
+                    cursor: url(/cursors/cyan/standart.cur), crosshair !important;
+                }
+                .btn, a, a * {
+                    cursor: url(/cursors/cyan/pointer.cur), pointer !important;
+                }
+                p, h4 {
+                    cursor: url(/cursors/cyan/select.cur), pointer !important;
+                }
+                ::-moz-selection { 
+                color: cyan;
+                background: #00000020;
+                border-radius: 15px;
+                }
+                ::selection {
+                color: cyan;
+                background: #00000020;
+                }
+            </style>
+            <div class="content">
+                <div class="content-page ml-0">
+                    <div class="content">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Сервера</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row justify-content-center">
+                                        <% if(user.displayedGuilds){ user.displayedGuilds.forEach(function(guild) { %>
+                                        <div class="col-md-12 col-md-auto bypass_col">
+                                            <div class="card-box card-border">
+                                                <div class="row">
+                                                    <div class="cell col-3">
+                                                        <div style="margin-top:2px">
+                                                            <% if (guild.icon) { %>
+                                                                <img class="rounded-circle" id="<%= guild.id %>1" src="<%= guild.iconURL %>" style="width:45px" alt="" draggable="false" onerror="javascript:imgs('<%= guild.id %>')">
+                                                                <img class="rounded-circle" id="<%= guild.id %>2" src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.png" style="width:45px;display: none;" alt="" draggable="false">
+                                                            <% } else { %>
+                                                                <img class="rounded-circle" src="/discord.png" style="width:45px" alt="" draggable="false">
+                                                            <%}%>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell col-8">
+                                                        <p class="text-center mb-0 font-16 border-0 ml-0" style="width:145px;color:#fff;overflow-wrap:break-word"><%= guild.name %></p>
+                                                    </div>
+                                                    <div class="cell col-12 mt-1">
+                                                        <a style="display:block;color:#fff" class="btn text-center btn-secondary btn-xs" role="button" href="<%= guild.settingsUrl %>"><%= guild.settingsmsg %></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% }); } else { %>
+                                            <p>Не удалось найти сервера</p>
+                                        <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%- include('invite/discord') %>
+        </div>
+        <script src="/js/dev.js"></script>
+        <script src="/js/anti.js"></script>
+        <script src="/vendor/jquery/jquery.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      </div>
+    </body>
+</html>
